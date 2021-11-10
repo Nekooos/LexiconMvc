@@ -57,18 +57,24 @@ namespace LexiconMvc
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=About}/{action=Index}/{id?}");
+                    pattern: "{controller=Site}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "repositories",
                     pattern: "{repositories}",
-                    defaults: new { controller = "Repositories", Action = "ShowAllRepositories" }
+                    defaults: new { controller = "Site", Action = "ShowAllRepositories" }
                 );
 
                 endpoints.MapControllerRoute(
                     name: "contact",
                     pattern: "{contact}",
-                    defaults: new { controller = "Contact", Action = "ShowContactInformation" }
+                    defaults: new { controller = "Site", Action = "ShowContactInformation" }
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "fever-check",
+                    pattern: "{fecer-check}",
+                    defaults: new { controller = "Doctor", Action = "FeverCheck" }
                 );
             });
 

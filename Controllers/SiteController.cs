@@ -1,14 +1,38 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using LexiconMvc.Models;
+using LexiconMvc.Data;
+using Microsoft.AspNetCore.Http;
+using System.Text.Json;
 
 namespace LexiconMvc.Controllers
 {
-    public class AboutController : Controller
+    public class SiteController : Controller
     {
+        private IGithubRepositoriesData _githubProjectsData;
+
+        public SiteController(IGithubRepositoriesData githubProjectsData)
+        {
+            _githubProjectsData = githubProjectsData;
+        }
+
+        public IActionResult ShowAllRepositories()
+        {
+            ViewBag.HeadLine = "Github Repositories Lexicon";
+            IEnumerable<GithubRepository> githubRepositories = _githubProjectsData.getAll();
+            return View(githubRepositories);
+        }
+
+        public IActionResult ShowContactInformation()
+        {
+            ViewBag.Headline = "Contact information";
+            ViewBag.Name = "Kristoffer Gustafsson";
+            ViewBag.Address = "Imaginary Street 44B 123 45 Göteborg";
+            ViewBag.PhoneNumber = "070 777 77 77";
+            ViewBag.Email = "mail@mail.com";
+
+            return View();
+        }
 
         public IActionResult Index()
         {
@@ -21,5 +45,6 @@ namespace LexiconMvc.Controllers
 
             return View();
         }
+
     }
 }
