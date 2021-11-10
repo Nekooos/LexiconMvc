@@ -1,0 +1,15 @@
+﻿@model IEnumerable<GithubRepository>
+
+@{
+    ViewData["Title"] = "Lexicon Assignment Week 8 Github Projects";
+}
+
+<h1>@ViewBag.HeadLine</h1>
+
+    @foreach (var repository in Model)
+    {
+        <section>
+            <h2><a href=@repository.RepositoryUrl>@repository.Name</a></h2>
+            <p>@repository.Description</p>
+        </section>
+    }

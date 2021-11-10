@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\bin",
+    "\\bin\\Debug",
+    "\\bin\\Debug\\netcoreapp3.1",
+    "\\bin\\Release",
+    "\\bin\\Release\\netcoreapp3.1",
+    "\\Controllers",
+    "\\Data",
+    "\\Models",
+    "\\obj"
+  ],
+  "SelectedNode": "\\bin\\Debug\\netcoreapp3.1\\appsettings.Development.json",
+  "PreviewInSolutionExplorer": false
+}

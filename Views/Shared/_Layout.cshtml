@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="grid-container">
+        <header class="site-header">
+            <h1 class="logo">Logo</h1>
+            <nav>
+                <ul>
+                    <!-- link text, action, controller-->
+                    <li>@Html.ActionLink("About", "Index", "About")</li>
+                    <li>@Html.ActionLink("Github Repositories", "ShowAllRepositories", "Repositories")</li>
+                    <li>@Html.ActionLink("Contact", "ShowContactInformation", "Contact")</li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container">
+            <main class="render-body">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer>
+            <p>Time: <span class="current-time">@DateTime.Now</span></p>
+            <p>Kristoffer Gustafsson</p>
+        </footer>
+    </div>
+</body>
+</html>
