@@ -9,10 +9,19 @@ namespace LexiconMvc.Controllers
 {
     public class DoctorController : Controller
     {
-        // Post
-        public IActionResult FeverCheck(Fever fever)
+        
+        public IActionResult FeverCheck()
         {
+            
+            return View();
+        }
 
+        [HttpPost]
+        public IActionResult FeverCheck(FeverForm feverForm)
+        {
+            Boolean isValid = FeverFormValidation.isValidFeverValue(feverForm.FeverValue);
+            String feverMessage = feverForm.FeverValue > 36 ? "You have a fever" : "You don't have a fever";
+            ViewBag.FeverMessage = isValid ? feverMessage : "";
             return View();
         }
     }

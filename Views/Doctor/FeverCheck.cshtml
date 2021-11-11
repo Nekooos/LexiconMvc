@@ -1,11 +1,17 @@
-﻿@model Fever
+﻿@model FeverForm
 
 @{
     ViewData["Title"] = "Lexicon Assignment Week 8 Fever Check";
 }
 
-<form asp-action="FeverCheck" asp-controller="Form">
+<h2>Fever Check</h2>
+
+<form asp-action="FeverCheck" asp-controller="Doctor">
     <label asp-for="FeverValue"></label>
-    <input asp-for="FeverValue" placeholder="0"/>
-    <input type ="submit" />
+    <input asp-for="FeverValue"/>
+
+    <input type="submit" />
+
+    <p>@ViewBag.FeverMessage</p>
+
 </form>
