@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LexiconMvc.Data;
+using LexiconMvc.Service;
+using Microsoft.AspNetCore.Http;
 
 namespace LexiconMvc
 {
@@ -25,13 +27,20 @@ namespace LexiconMvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IGithubRepositoriesData, GithubRepositoriesData>();
+            services.AddTransient<IGuessingGameService, GuessingGameService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddControllersWithViews();
+
 
             services.AddSession(options => {
                 options.IdleTimeout = TimeSpan.FromMinutes(10);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+
+            services.AddTransient<ISessionService, SessionService>();
 
         }
 
@@ -47,6 +56,7 @@ namespace LexiconMvc
  
                 app.UseHsts();
             }
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -61,18 +71,24 @@ namespace LexiconMvc
 
                 endpoints.MapControllerRoute(
                     name: "repositories",
-                    pattern: "{repositories}",
+                    pattern: "repositories",
                     defaults: new { controller = "Site", Action = "ShowAllRepositories" }
                 );
 
                 endpoints.MapControllerRoute(
                     name: "fever-check",
-                    pattern: "{fever-check}",
+                    pattern: "fever-check",
                     defaults: new { controller = "Doctor", Action = "FeverCheck" }
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "guessing-game",
+                    pattern: "GuessingGame",
+                    defaults: new { controller = "GuessingGame", Action = "GuessingGame" }
                 );
             });
 
-            app.UseSession();
+
         }
     }
 }

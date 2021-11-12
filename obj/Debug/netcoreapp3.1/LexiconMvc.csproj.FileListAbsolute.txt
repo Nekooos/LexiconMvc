@@ -219,3 +219,4 @@ D:\repos\mvcexample\LexiconMvc\LexiconMvc\bin\Debug\netcoreapp3.1\LexiconMvc.run
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\LexiconMvc.csproj.AssemblyReference.cache
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\LexiconMvc.genruntimeconfig.cache
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Doctor\FeverCheck.cshtml.g.cs
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\GuessingGame\GuessingGame.cshtml.g.cs

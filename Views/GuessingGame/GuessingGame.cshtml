@@ -1,0 +1,17 @@
+﻿@model GuessingGameForm
+@{
+    ViewData["Title"] = "Lexicon Assignment Week 8 Guessing Game";
+}
+
+<h2>Guessing Game</h2>
+
+<form asp-action="GuessingGame" asp-controller="GuessingGame" method="post">
+
+    <label asp-for="Guess"></label>
+    <input asp-for="Guess" />
+
+    <input type="submit" />
+
+    <p>@ViewBag.Message</p>
+
+</form>
