@@ -1,0 +1,14 @@
+﻿@model PersonViewModel
+
+<div class="row">
+    <div class="col-sm-2"><p>@Model.Name</p></div>
+    <div class="col-sm-2"><p>@Model.City</p></div>
+    <div class="col-sm-2"><p>@Model.PhoneNumber</p></div>
+    <div class="col-sm-2">
+        <button type="submit" value="Delete">
+            @Html.ActionLink("Delete", "Delete", "Person", new { phoneNumber = Model.PhoneNumber })
+        </button>
+    </div>
+   
+</div>
+
