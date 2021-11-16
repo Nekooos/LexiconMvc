@@ -28,6 +28,8 @@ namespace LexiconMvc
         {
             services.AddTransient<IGithubRepositoriesData, GithubRepositoriesData>();
             services.AddTransient<IGuessingGameService, GuessingGameService>();
+            services.AddSingleton<IPersonData, PersonData>();
+            services.AddTransient<IPersonService, PersonService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -83,8 +85,14 @@ namespace LexiconMvc
 
                 endpoints.MapControllerRoute(
                     name: "guessing-game",
-                    pattern: "GuessingGame",
+                    pattern: "guessing-game",
                     defaults: new { controller = "GuessingGame", Action = "GuessingGame" }
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "peoples",
+                    pattern: "{controller}/{action}/{searchPhrase?}",
+                    defaults: new { controller = "Person", Action = "PeopleIndex", }
                 );
             });
 

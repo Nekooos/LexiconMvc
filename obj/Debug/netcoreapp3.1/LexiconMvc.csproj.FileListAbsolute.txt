@@ -220,3 +220,4 @@ D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\LexiconMvc.csp
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\LexiconMvc.genruntimeconfig.cache
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Doctor\FeverCheck.cshtml.g.cs
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\GuessingGame\GuessingGame.cshtml.g.cs
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Person\PeopleIndex.cshtml.g.cs

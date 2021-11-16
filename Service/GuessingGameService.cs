@@ -19,7 +19,7 @@ namespace LexiconMvc.Service
 
         public String GuessNumber(int guess, int answer)
         {
-            if (guess == answer)
+            if (guess == getSessionAnswer("Answer"))
             {
                 _sessionService.deleteSession("RandomNumber");
                 return $"You guessed the right number {answer}";

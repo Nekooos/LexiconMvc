@@ -1,0 +1,58 @@
+﻿@model PeopleViewModel
+
+@{
+    ViewData["Title"] = "Lexicon Assignment Week 9 Person";
+}
+
+<h2>Peoples</h2>
+<form asp-action="Search" asp-controller="Person" method="post">
+
+    <label asp-for="SearchPhrase"></label>
+    <input asp-for="SearchPhrase" />
+
+    <input type="submit" />
+</form>
+
+<form asp-action="Save" asp-controller="Person" method="post">
+
+    <label asp-for="CreatePersonViewModel.Name"></label>
+    <input asp-for="CreatePersonViewModel.Name" />
+
+    <label asp-for="CreatePersonViewModel.City"></label>
+    <input asp-for="CreatePersonViewModel.City" />
+
+    <label asp-for="CreatePersonViewModel.PhoneNumber"></label>
+    <input asp-for="CreatePersonViewModel.PhoneNumber" />
+
+    <input type="submit" />
+
+
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">City</th>
+            <th scope="col">PhoneNumber</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var person in Model.Persons)
+        {
+        <tr>
+            <td>@person.Name</td>
+            <td>@person.City</td>
+            <td>@person.PhoneNumber</td>
+            <td>
+                <button type="submit" value="Delete">
+                    @Html.ActionLink("Delete", "Delete", "Person", new { phoneNumber = person.PhoneNumber })
+                </button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+

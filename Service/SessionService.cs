@@ -19,11 +19,20 @@ namespace LexiconMvc.Service
         public void SetSession(String key, String value)
         {
             _session.SetString(key, value);
+            /*
+             *  session.SetString(key, JsonSerializer.Serialize(value));
+             */
         }
 
         public String getSession(String key)
         {
-            return _session.GetString(key);
+
+            /*
+                return value == null ? default : JsonSerializer.Deserialize<T>(value);
+             */
+            var value = _session.GetString(key);
+            return value == null ? default : value;
+            
         }
 
         public void deleteSession(String key)
