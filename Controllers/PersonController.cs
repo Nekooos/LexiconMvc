@@ -18,7 +18,8 @@ namespace LexiconMvc.Controllers
         {
             _personService = personService;
         }
-     
+        
+        [HttpGet]
         public ActionResult PeopleIndex()
         {
             

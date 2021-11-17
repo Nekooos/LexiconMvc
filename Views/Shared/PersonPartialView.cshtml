@@ -9,6 +9,13 @@
             @Html.ActionLink("Delete", "Delete", "Person", new { phoneNumber = Model.PhoneNumber })
         </button>
     </div>
-   
+
+    <div class="col-sm-2">
+        <button onclick="location.href =
+                    '@Url.Action("Delete","Person", new { phoneNumber = Model.PhoneNumber })'">
+            Delete
+        </button>
+    </div>
+
 </div>
 

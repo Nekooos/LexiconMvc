@@ -11,8 +11,10 @@ namespace LexiconMvc.Data
         public List<Person> GetAll();
         public void Save(Person person);
 
-        public void DeleteByPhoneNumber(String phoneNumber);
+        public void DeletePerson(Person person);
 
         public bool ExistsByPhoneNumber(String phoneNumber);
+
+        public Person GetByPhoneNumber(String phoneNumber);
     }
 }

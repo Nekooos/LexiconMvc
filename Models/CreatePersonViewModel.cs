@@ -8,9 +8,12 @@ namespace LexiconMvc.Models
 {
     public class CreatePersonViewModel
     {
-        [Required(ErrorMessage ="Name is required")]
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage ="Name is required"), MaxLength(30), MinLength(2)]
+        [Display(Name="Name")]
         public String Name { get; set; }
 
+       
         [Required(ErrorMessage = "City is required")]
         public String City { get; set; }
 

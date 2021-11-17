@@ -56,9 +56,10 @@ namespace LexiconMvc.Service
 
         public void DeleteByPhoneNumber(string phoneNumber)
         {
-            var phoneNumberExists = _personData.ExistsByPhoneNumber(phoneNumber);
-            if (phoneNumberExists)
-                _personData.DeleteByPhoneNumber(phoneNumber);
+            var person  = _personData.GetByPhoneNumber(phoneNumber);
+
+            if (person != null)
+                _personData.DeletePerson(person);
             else
             {
                 throw new KeyNotFoundException("Person does not exist");

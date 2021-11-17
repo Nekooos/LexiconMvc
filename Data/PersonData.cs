@@ -34,17 +34,20 @@ namespace LexiconMvc.Data
         }
 
        
-        public void DeleteByPhoneNumber(String phoneNumber)
+        public void DeletePerson(Person person)
         {
-            var personToRemove = Persons.SingleOrDefault(person => person.PhoneNumber.Equals(phoneNumber));
-
-            if (personToRemove != null)
-                Persons.Remove(personToRemove);
+                Persons.Remove(person);
         }
 
         public bool ExistsByPhoneNumber(String phoneNumber)
         {
            return Persons.Exists(person => person.PhoneNumber.Equals(phoneNumber));
+        }
+
+        public Person GetByPhoneNumber(string phoneNumber)
+        {
+            return Persons.SingleOrDefault(person => person.PhoneNumber.Equals(phoneNumber));
+
         }
     }
 }
