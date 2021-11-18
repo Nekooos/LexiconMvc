@@ -16,5 +16,7 @@ namespace LexiconMvc.Data
         public bool ExistsByPhoneNumber(String phoneNumber);
 
         public Person GetByPhoneNumber(String phoneNumber);
+
+        public Person GetById(long id);
     }
 }

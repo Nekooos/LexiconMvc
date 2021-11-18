@@ -11,8 +11,8 @@ namespace LexiconMvc.Controllers
 {
     public class AjaxPersonController : Controller
     {
-        private PersonService _personService;
-        public AjaxPersonController(PersonService personService)
+        private IPersonService _personService;
+        public AjaxPersonController(IPersonService personService)
         {
             _personService = personService;
         }
@@ -21,20 +21,19 @@ namespace LexiconMvc.Controllers
         public IActionResult GetAll()
         {
             List<PersonViewModel> personViewModelList = _personService.GetAll();
-            return PartialView("PersonPartialView", personViewModelList);
+            return PartialView("AjaxPersonPartialView", personViewModelList);
         }
 
         [HttpDelete]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(string phoneNumber)
+        public IActionResult Delete(long id)
         {
             try
             {
-                _personService.DeleteByPhoneNumber(phoneNumber);
+                _personService.DeleteById(id);
             } 
             catch(KeyNotFoundException exception)
             {
-                return NotFound(exception.Message);
+                return BadRequest(exception.Message);
             }
 
             return Ok();
@@ -44,9 +43,12 @@ namespace LexiconMvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Save(CreatePersonViewModel person)
         {
+            Person createdPerson = new Person();
+
             if (ModelState.IsValid)
             {
-                var createdPerson = _personService.Save(person);
+                createdPerson = _personService.Save(person);
+
 
                 if (createdPerson == null)
                 {
@@ -54,37 +56,25 @@ namespace LexiconMvc.Controllers
                     return BadRequest();
                 }
             }
-            return CreatedAtAction(nameof(GetByPhoneNumber), new { phoneNumber = person.PhoneNumber }, person);
+            return CreatedAtAction(nameof(GetById), new { Id = createdPerson.Id }, createdPerson);
         }
 
+        //[HttpGet]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Search(String SearchPhrase)
+        public IActionResult GetById(long id)
         {
-            List<PersonViewModel> personViewModelsList;
+            Person person = _personService.GetById(id);
 
-            if (SearchPhrase != null)
-            {
-                personViewModelsList = _personService.FilterByCityOrName(SearchPhrase);
-            }
-            else
-            {
-                personViewModelsList = _personService.GetAll();
-            }
-            return Ok(personViewModelsList);
-        }
-
-        [HttpGet]
-        public IActionResult GetByPhoneNumber(String phoneNumber)
-        {
-            Person person = _personService.GetByPhoneNumber(phoneNumber);
-            
             if(person == null)
             {
-                return NotFound();
+                return NotFound("Could not find person  with id: " + id);
             }
+            return PartialView("PersonDetails", _personService.CreatePersonViewModel(person));
+        }
 
-            return Ok(_personService.CreatePersonViewModel(person));
+        public IActionResult AjaxPersonIndex()
+        {
+            return View();
         }
     }
 }

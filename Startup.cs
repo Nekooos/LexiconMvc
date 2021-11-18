@@ -92,8 +92,28 @@ namespace LexiconMvc
                 endpoints.MapControllerRoute(
                     name: "peoples",
                     pattern: "{controller}/{action}/{searchPhrase?}",
-                    defaults: new { controller = "Person", Action = "PeopleIndex", }
+                    defaults: new { controller = "Person", Action = "PeopleIndex" }
                 );
+
+                endpoints.MapControllerRoute(
+                    name: "ajax-peoples",
+                    pattern: "ajax-peoples",
+                    defaults: new { controller = "AjaxPerson", Action = "AjaxPeopleIndex"}
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "ajax-peoples",
+                    pattern: "{controller}/{action}",
+                    defaults: new { controller = "AjaxPerson", Action = "GetById"}
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "ajax-peoples",
+                    pattern: "{controller}/{action}",
+                    defaults: new { controller = "AjaxPerson", Action = "Delete" }
+                );
+
+
             });
 
 

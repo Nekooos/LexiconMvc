@@ -28,22 +28,17 @@
 
 </form>
 
-<button onclick="getAll()">Test</button>
-
 <h3>Partial View</h3>
 
 <div class="row">
+    <div class="col-sm-2"><b>Id</b></div>
     <div class="col-sm-2"><b>Name</b></div>
     <div class="col-sm-2"><b>City</b></div>
     <div class="col-sm-2"><b>PhoneNumber</b></div>
     <div class="col-sm-2"><b>Delete</b></div>
 </div>
 
+<partial name="PersonPartialView" , model="Model.Persons" /> 
 
-
-<input type="button" class="btn btn-primary" onclick="getAll()" value="Get All Persons" />
-
-<!--<partial name="PersonPartialView" , model="Model.Persons" /> -->
-<div id="PersonList"></div>
 
 

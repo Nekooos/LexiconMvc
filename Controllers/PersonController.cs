@@ -54,7 +54,7 @@ namespace LexiconMvc.Controllers
             return View("PeopleIndex", new PeopleViewModel(personViewModelsList));
         }
 
-   
+        [HttpDelete]
         public ActionResult Delete(String phoneNumber)
         {
             try 

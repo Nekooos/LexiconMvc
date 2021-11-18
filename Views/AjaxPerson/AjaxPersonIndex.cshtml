@@ -1,0 +1,30 @@
+﻿@model PeopleViewModel
+
+@{
+    ViewData["Title"] = "Lexicon Assignment Week 9 Person";
+}
+
+<h1>Ajax Peoples</h1>
+
+<input id="input-id" type="number" />
+<button onclick="getById()">Person details by id</button>
+
+<div id="PersonDetails"></div>
+
+<h3>Partial View</h3>
+
+<input type="button" class="btn btn-primary" onclick="getAll()" value="Get All Persons" />
+
+
+<div id="PersonList"></div>
+
+
+<input id="delete-input-id" type="number" />
+<button onclick="deleteById()">Delete Person by id</button>
+
+<h3>Messages</h3>
+<p id="status-message"></p>
+
+
+
+

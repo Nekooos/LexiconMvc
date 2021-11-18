@@ -16,8 +16,12 @@ namespace LexiconMvc.Service
 
         void DeleteByPhoneNumber(string phoneNumber);
 
+        void DeleteById(long id);
+
         Person GetByPhoneNumber(String phoneNmber);
 
         PersonViewModel CreatePersonViewModel(Person person);
+
+        Person GetById(long id);
     }
 }

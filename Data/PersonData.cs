@@ -14,12 +14,12 @@ namespace LexiconMvc.Data
         {
             Persons = new List<Person>()
             {
-                new Person("Kristoffer", "Göteborg", "070 111 11 11"),
-                new Person("Rebecca", "Göteborg", "070 111 11 12"),
-                new Person("Marvin", "Växjö", "070 111 11 13"),
-                new Person("Sara", "Växjö", "070 111 11 14"),
-                new Person("Marcus", "Malmö", "070 111 11 15"),
-                new Person("Magnus", "Malmö", "070 111 11 16")
+                new Person(1, "Kristoffer", "Göteborg", "0701111111"),
+                new Person(2, "Rebecca", "Göteborg", "0701111112"),
+                new Person(3, "Marvin", "Växjö", "0701111113"),
+                new Person(4, "Sara", "Växjö", "0701111114"),
+                new Person(5, "Marcus", "Malmö", "0701111115"),
+                new Person(6, "Magnus", "Malmö", "0701111116")
             };
         }
 
@@ -45,10 +45,20 @@ namespace LexiconMvc.Data
            return Persons.Exists(person => person.PhoneNumber.Equals(phoneNumber));
         }
 
+        public Person GetById(long id)
+        {
+            return Persons.SingleOrDefault(person => person.Id.Equals(id));
+        } 
+
         public Person GetByPhoneNumber(string phoneNumber)
         {
             return Persons.SingleOrDefault(person => person.PhoneNumber.Equals(phoneNumber));
 
         }
+
+        public Person getById(long id)
+        {
+            return Persons.SingleOrDefault(person => person.Id == id);        
+        } 
     }
 }

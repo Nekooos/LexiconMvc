@@ -51,7 +51,19 @@ namespace LexiconMvc.Service
                 _personData.DeletePerson(person);
             else
             {
-                throw new KeyNotFoundException("Person does not exist");
+                throw new KeyNotFoundException("Could not delete person with phone number: " + phoneNumber + phoneNumber);
+            }
+        }
+
+        public void DeleteById(long id)
+        {
+            Person person = _personData.GetById(id);
+
+            if (person != null)
+                _personData.DeletePerson(person);
+            else
+            {
+                throw new KeyNotFoundException("Could not delete person with id: " + id);
             }
         }
 
@@ -64,6 +76,7 @@ namespace LexiconMvc.Service
         private Person CreatePerson(CreatePersonViewModel createPersonViewModel)
         {
             Person person = new Person();
+            person.Id = _personData.GetAll().Count()+1;
             person.Name = createPersonViewModel.Name;
             person.City = createPersonViewModel.City;
             person.PhoneNumber = createPersonViewModel.PhoneNumber;
@@ -73,10 +86,17 @@ namespace LexiconMvc.Service
         public PersonViewModel CreatePersonViewModel(Person person)
         {
             PersonViewModel personViewModel = new PersonViewModel();
+            personViewModel.Id = person.Id;
             personViewModel.Name = person.Name;
             personViewModel.City = person.City;
             personViewModel.PhoneNumber = person.PhoneNumber;
             return personViewModel;
+        }
+
+        public Person GetById(long id)
+        {
+            return _personData.GetById(id);
+            
         }
     }
 }

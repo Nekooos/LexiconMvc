@@ -19,6 +19,14 @@ namespace LexiconMvc.Models
             PhoneNumber = phoneNumber;
         }
 
+        public Person(long id, String name, String city, String phoneNumber)
+        {
+            Id = id;
+            Name = name;
+            City = city;
+            PhoneNumber = phoneNumber;
+        }
+
         public Person()
         {
 
