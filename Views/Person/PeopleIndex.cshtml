@@ -41,9 +41,9 @@
 
 
 
+<input type="button" class="btn btn-primary" onclick="getAll()" value="Get All Persons" />
 
-@foreach (var person in Model.Persons)
-{
-    <partial name="PersonPartialView" , model="person" />
-}
+<!--<partial name="PersonPartialView" , model="Model.Persons" /> -->
+<div id="PersonList"></div>
+
 

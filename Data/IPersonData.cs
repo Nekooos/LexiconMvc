@@ -9,7 +9,7 @@ namespace LexiconMvc.Data
     public interface IPersonData
     {
         public List<Person> GetAll();
-        public void Save(Person person);
+        public Person Save(Person person);
 
         public void DeletePerson(Person person);
 

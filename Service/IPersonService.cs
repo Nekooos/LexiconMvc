@@ -10,12 +10,14 @@ namespace LexiconMvc.Service
     {
         List<PersonViewModel> GetAll();
 
-        void Save(CreatePersonViewModel createPersonViewModel);
+        Person Save(CreatePersonViewModel createPersonViewModel);
 
         List<PersonViewModel> FilterByCityOrName(string filter);
 
         void DeleteByPhoneNumber(string phoneNumber);
 
+        Person GetByPhoneNumber(String phoneNmber);
 
+        PersonViewModel CreatePersonViewModel(Person person);
     }
 }

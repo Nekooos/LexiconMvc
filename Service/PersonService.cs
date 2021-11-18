@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using LexiconMvc.Data;
 using LexiconMvc.Models;
@@ -21,28 +22,16 @@ namespace LexiconMvc.Service
                 .ToList();
         }
 
-        public void Save(CreatePersonViewModel createPersonViewModel)
+        public Person Save(CreatePersonViewModel createPersonViewModel)
         {
+            if (_personData.ExistsByPhoneNumber(createPersonViewModel.PhoneNumber))
+            {
+                return null;
+            }
             Person person = CreatePerson(createPersonViewModel);
             _personData.Save(person);
-        }
-
-        private Person CreatePerson(CreatePersonViewModel createPersonViewModel)
-        {
-            Person person = new Person();
-            person.Name = createPersonViewModel.Name;
-            person.City = createPersonViewModel.City;
-            person.PhoneNumber = createPersonViewModel.PhoneNumber;
             return person;
-        }
-
-        private PersonViewModel CreatePersonViewModel(Person person) 
-        {
-            PersonViewModel personViewModel = new PersonViewModel();
-            personViewModel.Name = person.Name;
-            personViewModel.City = person.City;
-            personViewModel.PhoneNumber = person.PhoneNumber;
-            return personViewModel;
+          
         }
 
         public List<PersonViewModel> FilterByCityOrName(string searchWord)
@@ -54,9 +43,9 @@ namespace LexiconMvc.Service
                 .ToList();
         }
 
-        public void DeleteByPhoneNumber(string phoneNumber)
+        public void DeleteByPhoneNumber(String phoneNumber)
         {
-            var person  = _personData.GetByPhoneNumber(phoneNumber);
+            Person person  = _personData.GetByPhoneNumber(phoneNumber);
 
             if (person != null)
                 _personData.DeletePerson(person);
@@ -64,6 +53,30 @@ namespace LexiconMvc.Service
             {
                 throw new KeyNotFoundException("Person does not exist");
             }
+        }
+
+        public Person GetByPhoneNumber(String phoneNumber)
+        {
+            return _personData.GetByPhoneNumber(phoneNumber);
+            
+        }
+
+        private Person CreatePerson(CreatePersonViewModel createPersonViewModel)
+        {
+            Person person = new Person();
+            person.Name = createPersonViewModel.Name;
+            person.City = createPersonViewModel.City;
+            person.PhoneNumber = createPersonViewModel.PhoneNumber;
+            return person;
+        }
+
+        public PersonViewModel CreatePersonViewModel(Person person)
+        {
+            PersonViewModel personViewModel = new PersonViewModel();
+            personViewModel.Name = person.Name;
+            personViewModel.City = person.City;
+            personViewModel.PhoneNumber = person.PhoneNumber;
+            return personViewModel;
         }
     }
 }

@@ -28,9 +28,10 @@ namespace LexiconMvc.Data
             return Persons;
         }
 
-        public void Save(Person person)
+        public Person Save(Person person)
         {
             Persons.Add(person);
+            return person;
         }
 
        

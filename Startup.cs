@@ -26,10 +26,10 @@ namespace LexiconMvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IGithubRepositoriesData, GithubRepositoriesData>();
-            services.AddTransient<IGuessingGameService, GuessingGameService>();
+            services.AddScoped<IGithubRepositoriesData, GithubRepositoriesData>();
+            services.AddScoped<IGuessingGameService, GuessingGameService>();
             services.AddSingleton<IPersonData, PersonData>();
-            services.AddTransient<IPersonService, PersonService>();
+            services.AddScoped<IPersonService, PersonService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

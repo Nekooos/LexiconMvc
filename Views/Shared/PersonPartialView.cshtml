@@ -1,21 +1,26 @@
-﻿@model PersonViewModel
+﻿@model IEnumerable<PersonViewModel>
 
-<div class="row">
-    <div class="col-sm-2"><p>@Model.Name</p></div>
-    <div class="col-sm-2"><p>@Model.City</p></div>
-    <div class="col-sm-2"><p>@Model.PhoneNumber</p></div>
-    <div class="col-sm-2">
-        <button type="submit" value="Delete">
-            @Html.ActionLink("Delete", "Delete", "Person", new { phoneNumber = Model.PhoneNumber })
-        </button>
+@foreach(var person in Model) 
+{ 
+    <div class="row">
+        <div class="col-sm-2"><p>@person.Name</p></div>
+        <div class="col-sm-2"><p>@person.City</p></div>
+        <div class="col-sm-2"><p>@person.PhoneNumber</p></div>
+
+
+    
+        <div class="col-sm-2">
+            <button type="submit" value="Delete">
+                @Html.ActionLink("Delete", "Delete", "Person", new { phoneNumber = person.PhoneNumber })
+            </button>
+        </div>
+
+        <div class="col-sm-2">
+            <button onclick="location.href =
+                        '@Url.Action("Delete","Person", new { phoneNumber = person.PhoneNumber })'">
+                Delete
+            </button>
+        </div>
+    
     </div>
-
-    <div class="col-sm-2">
-        <button onclick="location.href =
-                    '@Url.Action("Delete","Person", new { phoneNumber = Model.PhoneNumber })'">
-            Delete
-        </button>
-    </div>
-
-</div>
-
+}
