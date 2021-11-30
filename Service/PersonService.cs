@@ -8,36 +8,38 @@ namespace LexiconMvc.Service
 {
     public class PersonService : IPersonService
     {
-        private IPersonData _personData;
+        private readonly LexiconMvcContext _context;
 
-        public PersonService(IPersonData personData)
+        public PersonService(IPersonData personData, LexiconMvcContext context)
         {
-            _personData = personData;
+            _context = context;
         }
 
         public List<PersonViewModel> GetAll()
-        {
-            return _personData.GetAll()
+        {   
+            var persons = _context.Persons
+                .Select(person => person)
+                .ToList();
+            return persons
                 .Select(person => CreatePersonViewModel(person))
                 .ToList();
         }
 
         public Person Save(CreatePersonViewModel createPersonViewModel)
         {
-            if (_personData.ExistsByPhoneNumber(createPersonViewModel.PhoneNumber))
-            {
-                return null;
-            }
+
             Person person = CreatePerson(createPersonViewModel);
-            _personData.Save(person);
+
+            _context.Persons.Add(person);
+            _context.SaveChanges();
+
             return person;
-          
         }
 
         public List<PersonViewModel> FilterByCityOrName(string searchWord)
         {
             var searchWordLowerCase = searchWord.ToLower();
-            return _personData.GetAll()
+            return _context.Persons.ToList()
                 .Where(person => person.Name.ToLower().Equals(searchWordLowerCase) || person.City.ToLower().Equals(searchWordLowerCase))
                 .Select(person => CreatePersonViewModel(person))
                 .ToList();
@@ -45,22 +47,28 @@ namespace LexiconMvc.Service
 
         public void DeleteByPhoneNumber(String phoneNumber)
         {
-            Person person  = _personData.GetByPhoneNumber(phoneNumber);
+            Person person  = _context.Persons.Find(phoneNumber);
 
             if (person != null)
-                _personData.DeletePerson(person);
+            {
+                _context.Persons.Remove(person);
+                _context.SaveChanges();
+            }
             else
             {
                 throw new KeyNotFoundException("Could not delete person with phone number: " + phoneNumber + phoneNumber);
             }
         }
 
-        public void DeleteById(long id)
+        public void DeleteById(int id)
         {
-            Person person = _personData.GetById(id);
+            Person person = _context.Persons.Find(id);
 
             if (person != null)
-                _personData.DeletePerson(person);
+            {
+                _context.Persons.Remove(person);
+                _context.SaveChanges();
+            }
             else
             {
                 throw new KeyNotFoundException("Could not delete person with id: " + id);
@@ -69,14 +77,13 @@ namespace LexiconMvc.Service
 
         public Person GetByPhoneNumber(String phoneNumber)
         {
-            return _personData.GetByPhoneNumber(phoneNumber);
+            return _context.Persons.Find(phoneNumber);
             
         }
 
         private Person CreatePerson(CreatePersonViewModel createPersonViewModel)
         {
             Person person = new Person();
-            person.Id = _personData.GetAll().Count()+1;
             person.Name = createPersonViewModel.Name;
             person.City = createPersonViewModel.City;
             person.PhoneNumber = createPersonViewModel.PhoneNumber;
@@ -93,9 +100,9 @@ namespace LexiconMvc.Service
             return personViewModel;
         }
 
-        public Person GetById(long id)
+        public Person GetById(int id)
         {
-            return _personData.GetById(id);
+            return _context.Persons.Find(id);
             
         }
     }

@@ -32,6 +32,30 @@ function getById() {
             $("#status-message").html(request.responseText + "\n StatusCode: " + request.status);
         }
     });
+
+}
+
+function createPerson() {
+
+    let name = document.getElementById('name').value;
+    let city = document.getElementById('city').value;
+    let phoneNumber = document.getElementById('phonenumber').value;
+    $.ajax({
+        url: '/AjaxPerson/Save',
+        type: 'POST',
+        data: { "Name": name, "City": city, "PhoneNumber": phoneNumber },
+        dataType: "json",
+        success: function (data, textStatus, request) {
+            $("#status-message2").html(request.responseText + "\n StatusCode: " + request.status);
+            console.log("success")
+            getAll();
+        },
+        error: function (request) {
+
+            $("#status-message2").html(request.responseText + "\n StatusCode: " + request.status);
+        }
+    });
+
 }
 
 function deleteById() {
@@ -39,17 +63,17 @@ function deleteById() {
 
     $.ajax({
         url: '/AjaxPerson/Delete',
-        type: 'DELETE',
+        type: 'POST',
         data: { id: personIdvalue },
         success: function (data, textStatus, request) {
             $("#status-message").html("Deleted person with id: " + personIdvalue + "\n StatusCode: " + request.status);
+            getAll();
         },
         error: function (request) {
 
-            $("#status-message").html(request.responseText + "\n StatusCode: " + request.status);
+            $("#status-message2").html(request.responseText + "\n StatusCode: " + request.status);
         }
     });
 }
-
 
 

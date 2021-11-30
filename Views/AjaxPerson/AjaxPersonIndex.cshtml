@@ -4,10 +4,23 @@
     ViewData["Title"] = "Lexicon Assignment Week 9 Person";
 }
 
+
 <h1>Ajax Peoples</h1>
 
 <input id="input-id" type="number" />
-<button onclick="getById()">Person details by id</button>
+<button onclick="getById()">getById</button>
+
+<h3>Create person</h3>
+<label for="name">Name</label>
+<input id="name" type="text" />
+
+<label for="city">City</label>
+<input id="city" type="text" />
+
+<label for="phonenumber">Phonenumber</label>
+<input id="phonenumber" type="text" />
+
+<button onclick="createPerson()">Save</button>
 
 <div id="PersonDetails"></div>
 
@@ -24,6 +37,7 @@
 
 <h3>Messages</h3>
 <p id="status-message"></p>
+<p id="status-message2"></p>
 
 
 

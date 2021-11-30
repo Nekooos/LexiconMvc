@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,9 +9,20 @@ namespace LexiconMvc.Models
 {
     public class Person
     {
-        public long Id { get; set; }
+        [Key]
+        [Column("PersonId")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [MaxLength(30)]
+        [Required]
         public String Name { get; set; }
+
+        [MaxLength(30)]
+        [Required]
         public String City { get; set; }
+
+        [Required]
         public String PhoneNumber { get; set; }
 
         public Person(String name, String city, String phoneNumber)
@@ -19,7 +32,7 @@ namespace LexiconMvc.Models
             PhoneNumber = phoneNumber;
         }
 
-        public Person(long id, String name, String city, String phoneNumber)
+        public Person(int id, String name, String city, String phoneNumber)
         {
             Id = id;
             Name = name;

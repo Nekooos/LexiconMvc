@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using LexiconMvc.Data;
 using LexiconMvc.Service;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace LexiconMvc
 {
@@ -43,6 +44,9 @@ namespace LexiconMvc
             });
 
             services.AddTransient<ISessionService, SessionService>();
+
+            services.AddDbContext<LexiconMvcContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("LexiconMvcContext")));
 
         }
 
@@ -112,6 +116,13 @@ namespace LexiconMvc
                     pattern: "{controller}/{action}",
                     defaults: new { controller = "AjaxPerson", Action = "Delete" }
                 );
+
+                endpoints.MapControllerRoute(
+                    name: "ajax-peoples",
+                    pattern: "{controller}/{action}",
+                    defaults: new { controller = "AjaxPerson", Action = "Save" }
+                );
+
 
 
             });

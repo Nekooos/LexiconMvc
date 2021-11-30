@@ -1,11 +1,7 @@
-﻿using LexiconMvc.Data;
-using LexiconMvc.Models;
+﻿using LexiconMvc.Models;
 using LexiconMvc.Service;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LexiconMvc.Controllers
 {
@@ -24,8 +20,8 @@ namespace LexiconMvc.Controllers
             return PartialView("AjaxPersonPartialView", personViewModelList);
         }
 
-        [HttpDelete]
-        public IActionResult Delete(long id)
+        [HttpPost]
+        public IActionResult Delete(int id)
         {
             try
             {
@@ -33,14 +29,13 @@ namespace LexiconMvc.Controllers
             } 
             catch(KeyNotFoundException exception)
             {
-                return BadRequest(exception.Message);
+                return NotFound(exception.Message);
             }
 
             return Ok();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Save(CreatePersonViewModel person)
         {
             Person createdPerson = new Person();
@@ -52,7 +47,6 @@ namespace LexiconMvc.Controllers
 
                 if (createdPerson == null)
                 {
-                    //Change to something better
                     return BadRequest();
                 }
             }
@@ -61,7 +55,7 @@ namespace LexiconMvc.Controllers
 
         //[HttpGet]
         [HttpPost]
-        public IActionResult GetById(long id)
+        public IActionResult GetById(int id)
         {
             Person person = _personService.GetById(id);
 

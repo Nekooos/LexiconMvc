@@ -7,16 +7,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using LexiconMvc.Data;
 using LexiconMvc.Service;
+using System.Data;
 
 namespace LexiconMvc.Controllers
 {
     public class PersonController : Controller
     {
 
-        private IPersonService _personService;
+        private readonly IPersonService _personService;
         public PersonController(IPersonService personService)
         {
             _personService = personService;
+  
         }
         
         [HttpGet]
@@ -32,7 +34,14 @@ namespace LexiconMvc.Controllers
         public ActionResult Save(CreatePersonViewModel createPersonViewModel)
         {
             if (ModelState.IsValid)
-                _personService.Save(createPersonViewModel);
+                try
+                {
+                    _personService.Save(createPersonViewModel);
+                } 
+                catch(DataException)
+                {
+                    ViewBag.ErrorMessage = "Could not save Person";
+                }
 
             return RedirectToAction("PeopleIndex");
         }
@@ -65,7 +74,7 @@ namespace LexiconMvc.Controllers
             {
                 ViewBag.ErrorMessage = exception.Message;
             }
-            return RedirectToAction("PeopleIndex");
+            return View("PeopleIndex");
          }
     }
 }
