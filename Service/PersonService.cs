@@ -40,7 +40,7 @@ namespace LexiconMvc.Service
         {
             var searchWordLowerCase = searchWord.ToLower();
             return _context.Persons.ToList()
-                .Where(person => person.Name.ToLower().Equals(searchWordLowerCase) || person.City.ToLower().Equals(searchWordLowerCase))
+                .Where(person => person.Name.ToLower().Equals(searchWordLowerCase) || person.City.Name.ToLower().Equals(searchWordLowerCase))
                 .Select(person => CreatePersonViewModel(person))
                 .ToList();
         }
@@ -81,7 +81,7 @@ namespace LexiconMvc.Service
             
         }
 
-        private Person CreatePerson(CreatePersonViewModel createPersonViewModel)
+        public Person CreatePerson(CreatePersonViewModel createPersonViewModel)
         {
             Person person = new Person();
             person.Name = createPersonViewModel.Name;
@@ -95,7 +95,8 @@ namespace LexiconMvc.Service
             PersonViewModel personViewModel = new PersonViewModel();
             personViewModel.Id = person.Id;
             personViewModel.Name = person.Name;
-            personViewModel.City = person.City;
+            if(person.City != null)
+                personViewModel.City = person.City;
             personViewModel.PhoneNumber = person.PhoneNumber;
             return personViewModel;
         }

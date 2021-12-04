@@ -1,13 +1,12 @@
 ﻿using LexiconMvc.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LexiconMvc.Data;
 using LexiconMvc.Service;
 using System.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using LexiconMvc.Data;
+using System.Linq;
 
 namespace LexiconMvc.Controllers
 {
@@ -15,39 +14,40 @@ namespace LexiconMvc.Controllers
     {
 
         private readonly IPersonService _personService;
-        public PersonController(IPersonService personService)
+        private readonly LexiconMvcContext _context;
+        public PersonController(IPersonService personService, LexiconMvcContext context)
         {
             _personService = personService;
-  
+            _context = context;
         }
         
         [HttpGet]
-        public ActionResult PeopleIndex()
+        public ActionResult Index()
         {
-            
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
             List<PersonViewModel> personViewModelsList = _personService.GetAll();
             return View( new PeopleViewModel(personViewModelsList));
           
         }
 
         [HttpPost]
-        public ActionResult Save(CreatePersonViewModel createPersonViewModel)
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([Bind("Id, Name, PhoneNumber, CityId")] CreatePersonViewModel createPersonViewModel)
         {
+            Person person = CreatePerson(createPersonViewModel);
             if (ModelState.IsValid)
-                try
-                {
-                    _personService.Save(createPersonViewModel);
-                } 
-                catch(DataException)
-                {
-                    ViewBag.ErrorMessage = "Could not save Person";
-                }
+            {
+                _context.Add(person);
+                _context.SaveChanges();
+               
+            }
 
-            return RedirectToAction("PeopleIndex");
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name", person.CityId);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public ActionResult Search(String SearchPhrase)
+        public IActionResult Search(String SearchPhrase)
         {
             List<PersonViewModel> personViewModelsList;
 
@@ -60,21 +60,32 @@ namespace LexiconMvc.Controllers
                 personViewModelsList = _personService.GetAll();
             }
 
-            return View("PeopleIndex", new PeopleViewModel(personViewModelsList));
+            return View("Index", new PeopleViewModel(personViewModelsList));
         }
 
         [HttpDelete]
-        public ActionResult Delete(String phoneNumber)
+        public IActionResult Delete(int id)
         {
-            try 
+            var person = _context.Persons
+                .FirstOrDefault(person => person.Id == id);
+            if (person == null)
             {
-                _personService.DeleteByPhoneNumber(phoneNumber);
+                return NotFound();
             }
-            catch(KeyNotFoundException exception)
-            {
-                ViewBag.ErrorMessage = exception.Message;
-            }
-            return View("PeopleIndex");
-         }
+
+            _context.Persons.Remove(person);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private Person CreatePerson(CreatePersonViewModel createPersonViewModel)
+        {
+            Person person = new Person();
+            person.Name = createPersonViewModel.Name;
+            person.City = createPersonViewModel.City;
+            person.CityId = createPersonViewModel.CityId;
+            person.PhoneNumber = createPersonViewModel.PhoneNumber;
+            return person;
+        }
     }
 }

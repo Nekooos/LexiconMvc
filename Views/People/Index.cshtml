@@ -1,0 +1,91 @@
+﻿@model PeopleViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Peoples</h1>
+
+<h4>Create</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CreatePersonViewModel.Name" class="control-label"></label>
+                <input asp-for="CreatePersonViewModel.Name" class="form-control" />
+                <span asp-validation-for="CreatePersonViewModel.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatePersonViewModel.CityId" class="control-label"></label>
+                <select asp-for="CreatePersonViewModel.CityId" class="form-control" asp-items="ViewBag.CityId"></select>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="CreatePersonViewModel.PhoneNumber" class="control-label"></label>
+                <input asp-for="CreatePersonViewModel.PhoneNumber" class="form-control" />
+                <span asp-validation-for="CreatePersonViewModel.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                PhoneNumber
+            </th>
+            <th>
+                Laguages
+            </th>
+            <th>
+                Delete
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model.Persons)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => person.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => person.City.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => person.City.Country.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => person.PhoneNumber)
+            </td>
+            <td>
+                @foreach (var langage in person.PersonLanguage)
+                {
+
+                        <p>@langage.LanguageId</p>
+
+                }
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@person.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

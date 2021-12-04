@@ -19,24 +19,35 @@ namespace LexiconMvc.Models
         public String Name { get; set; }
 
         [MaxLength(30)]
-        [Required]
-        public String City { get; set; }
+        public City City { get; set; }
 
-        [Required]
+        
+        public int? CityId { get; set; }
+
         public String PhoneNumber { get; set; }
 
-        public Person(String name, String city, String phoneNumber)
+        public List<PersonLanguage> PersonLanguages { get; set; }
+
+        public Person(String name, City city, String phoneNumber)
         {
             Name = name;
             City = city;
             PhoneNumber = phoneNumber;
         }
 
-        public Person(int id, String name, String city, String phoneNumber)
+        public Person(int id, String name, City city, int cityId, String phoneNumber)
         {
             Id = id;
             Name = name;
             City = city;
+            CityId = cityId;
+            PhoneNumber = phoneNumber;
+        }
+
+        public Person(int id, String name, String phoneNumber)
+        {
+            Id = id;
+            Name = name;
             PhoneNumber = phoneNumber;
         }
 

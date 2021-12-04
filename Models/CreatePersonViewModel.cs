@@ -13,11 +13,13 @@ namespace LexiconMvc.Models
         [Display(Name="Name")]
         public String Name { get; set; }
 
-       
-        [Required(ErrorMessage = "City is required")]
-        public String City { get; set; }
+        public City City { get; set; }
+
+        public int CityId { get; set; }
+
 
         [Required(ErrorMessage = "Phone number is required")]
         public String PhoneNumber { get; set; }
+
     }
 }

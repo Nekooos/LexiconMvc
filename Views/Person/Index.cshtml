@@ -1,0 +1,54 @@
+﻿@model PeopleViewModel
+
+@{
+    ViewData["Title"] = "Lexicon Assignment Week 9 Person";
+}
+
+<h2>Peoples</h2>
+<form asp-action="Search" asp-controller="Person" method="post">
+
+    <label asp-for="SearchPhrase"></label>
+    <input asp-for="SearchPhrase" />
+
+    <input type="submit" />
+</form>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CreatePersonViewModel.Name" class="control-label"></label>
+                <input asp-for="CreatePersonViewModel.Name" class="form-control" />
+                <span asp-validation-for="CreatePersonViewModel.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatePersonViewModel.CityId" class="control-label"></label>
+                <select asp-for="CreatePersonViewModel.CityId" class="form-control" asp-items="ViewBag.CityId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatePersonViewModel.PhoneNumber" class="control-label"></label>
+                <input asp-for="CreatePersonViewModel.PhoneNumber" class="form-control" />
+                <span asp-validation-for="CreatePersonViewModel.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<h3>Partial View</h3>
+
+<div class="row">
+    <div class="col-sm-2"><b>Id</b></div>
+    <div class="col-sm-2"><b>Name</b></div>
+    <div class="col-sm-2"><b>City</b></div>
+    <div class="col-sm-2"><b>PhoneNumber</b></div>
+    <div class="col-sm-2"><b>Delete</b></div>
+</div>
+
+<partial name="PersonPartialView" , model="Model.Persons" /> 
+
+
+

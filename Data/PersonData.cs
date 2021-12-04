@@ -14,12 +14,7 @@ namespace LexiconMvc.Data
         {
             Persons = new List<Person>()
             {
-                new Person(1, "Kristoffer", "Göteborg", "0701111111"),
-                new Person(2, "Sara", "Göteborg", "0701111112"),
-                new Person(3, "Marvin", "Växjö", "0701111113"),
-                new Person(4, "Sara", "Växjö", "0701111114"),
-                new Person(5, "Marcus", "Malmö", "0701111115"),
-                new Person(6, "Magnus", "Malmö", "0701111116")
+
             };
         }
 

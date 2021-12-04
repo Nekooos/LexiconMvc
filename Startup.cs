@@ -118,16 +118,12 @@ namespace LexiconMvc
                 );
 
                 endpoints.MapControllerRoute(
-                    name: "ajax-peoples",
+                    name: "person-language-delete",
                     pattern: "{controller}/{action}",
-                    defaults: new { controller = "AjaxPerson", Action = "Save" }
+                    defaults: new { controller = "PersonLanguages", Action = "Delete" }
                 );
 
-
-
             });
-
-
         }
     }
 }

@@ -1,0 +1,58 @@
+﻿@model LanguageViewModels
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Language</h1>
+
+<h4>Create</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Language.Name" class="control-label"></label>
+                <input asp-for="Language.Name" class="form-control" />
+                <span asp-validation-for="Language.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th></th>
+            <th>
+                Language
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var language in Model.Languages)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => language.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => language.Name)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@language.Id">Delete</a>
+            </td>
+        </tr>
+
+        }
+    </tbody>
+</table>

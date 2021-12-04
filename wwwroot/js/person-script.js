@@ -55,7 +55,6 @@ function createPerson() {
             $("#status-message2").html(request.responseText + "\n StatusCode: " + request.status);
         }
     });
-
 }
 
 function deleteById() {

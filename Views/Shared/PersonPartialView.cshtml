@@ -8,14 +8,10 @@
     <div class="col-sm-2"><p>@person.City</p></div>
     <div class="col-sm-2"><p>@person.PhoneNumber</p></div>
 
-
-
     <div class="col-sm-2">
-        <button type="submit" value="Delete">
-            @Html.ActionLink("Delete", "Delete", "Person", new { phoneNumber = person.PhoneNumber })
-        </button>
+ 
+        <a asp-action="Delete" asp-route-id="@person.Id">Delete</a>
+
     </div>
-
-
 </div>
 }

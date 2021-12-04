@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LexiconMvc.Models
 {
@@ -10,9 +7,10 @@ namespace LexiconMvc.Models
     {
         public long Id { get; set; }
         public String Name { get; set; }
-        public String City { get; set; }
+        public City City { get; set; }
         public String PhoneNumber { get; set; }
 
+        public List<PersonLanguage> PersonLanguage { get; set; }
         public PersonViewModel()
         {
 
