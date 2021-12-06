@@ -26,11 +26,14 @@
                     <li>@Html.ActionLink("Cities", "Index", "Cities")</li>
                     <li>@Html.ActionLink("Language", "Index", "Languages")</li>
                     <li>@Html.ActionLink("Person Language", "Index", "PersonLanguages")</li>
+                    <partial name="_LoginPartial" />
+
                 </ul>
             </nav>
         </header>
         <div class="container">
             <main class="render-body">
+
                 @RenderBody()
             </main>
         </div>

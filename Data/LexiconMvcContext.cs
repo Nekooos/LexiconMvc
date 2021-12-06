@@ -6,19 +6,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace LexiconMvc.Data
 {
-    public class LexiconMvcContext : DbContext
+    public class LexiconMvcContext : IdentityDbContext<ApplicationUser>
     {
         public LexiconMvcContext(DbContextOptions<LexiconMvcContext> options) : base(options) { }
         public DbSet<Person> Persons { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Language> Language { get; set; }
+        public DbSet<PersonLanguage> PersonLanguage { get; set; }
+
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Person>()
                 .HasOne<City>(person => person.City)
@@ -104,6 +110,6 @@ namespace LexiconMvc.Data
 
         }
 
-        public DbSet<LexiconMvc.Models.PersonLanguage> PersonLanguage { get; set; }
+        
     }
 }

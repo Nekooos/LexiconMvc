@@ -27,17 +27,17 @@ namespace LexiconMvc.Controllers
                     _context.PersonLanguage
                         .Include(p => p.Language)
                         .Include(p => p.Person).ToList()
-                )); ;
+                ));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PersonId, LanguageId")] PersonLanguage personLanguage)
+        public IActionResult Create([Bind("PersonId, LanguageId")] PersonLanguage personLanguage)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(personLanguage);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["LanguageId"] = new SelectList(_context.Language, "Id", "Name", personLanguage.LanguageId);

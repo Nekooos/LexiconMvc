@@ -25,6 +25,7 @@ namespace LexiconMvc.Controllers
                                 _context.Persons
                                     .Include(person => person.City)
                                     .Include(person => person.PersonLanguages)
+                                    .ThenInclude(personLanguage => personLanguage.Language)
                                     .Include(person => person.City.Country)
                                     .ToList()
                                     .Select(person => CreatePersonViewModel(person))
@@ -67,12 +68,28 @@ namespace LexiconMvc.Controllers
 
         private bool PersonExists(int id)
         {
-            return _context.Persons.Any(e => e.Id == id);
+            return _context.Persons.Any(person => person.Id == id);
+        }
+
+        public IActionResult Edit(int id)
+        {
+
+            Person person = _context.Persons
+                .Include(person => person.City)
+                .Include(person => person.PersonLanguages)
+                .ThenInclude(personLanguage => personLanguage.Language)
+                .FirstOrDefault(person => person.Id == id);
+
+            ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
+            ViewData["LanguageId"] = new SelectList(_context.Language, "Id", "Name");
+            return View(person);
         }
 
         [HttpPost]
-        public ActionResult Edit(CreatePersonViewModel person)
+        public IActionResult Edit(Person person)
         {
+     
+
             if (ModelState.IsValid)
             {
                 _context.Entry(person).State = EntityState.Modified;

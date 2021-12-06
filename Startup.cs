@@ -12,6 +12,8 @@ using LexiconMvc.Data;
 using LexiconMvc.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using LexiconMvc.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace LexiconMvc
 {
@@ -48,6 +50,12 @@ namespace LexiconMvc
             services.AddDbContext<LexiconMvcContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("LexiconMvcContext")));
 
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddDefaultUI()
+                .AddDefaultTokenProviders()
+                .AddEntityFrameworkStores<LexiconMvcContext>();
+
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,14 +67,16 @@ namespace LexiconMvc
             }
             else
             {
- 
-                app.UseHsts();
+                 app.UseHsts();
             }
             app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthorization();
+            app.UseAuthentication();
 
 
             app.UseEndpoints(endpoints =>
@@ -122,6 +132,8 @@ namespace LexiconMvc
                     pattern: "{controller}/{action}",
                     defaults: new { controller = "PersonLanguages", Action = "Delete" }
                 );
+
+                endpoints.MapRazorPages();
 
             });
         }

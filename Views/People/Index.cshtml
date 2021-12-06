@@ -55,6 +55,9 @@
             <th>
                 Delete
             </th>
+            <th>
+                Edit
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -78,12 +81,15 @@
                 @foreach (var langage in person.PersonLanguage)
                 {
 
-                        <p>@langage.LanguageId</p>
+                        <p>@langage.Language.Name</p>
 
                 }
             </td>
             <td>
                 <a asp-action="Delete" asp-route-id="@person.Id">Delete</a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@person.Id">Edit</a>
             </td>
         </tr>
         }
