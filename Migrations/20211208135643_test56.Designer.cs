@@ -4,14 +4,16 @@ using LexiconMvc.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LexiconMvc.Migrations
 {
     [DbContext(typeof(LexiconMvcContext))]
-    partial class LexiconMvcContextModelSnapshot : ModelSnapshot
+    [Migration("20211208135643_test56")]
+    partial class test56
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,22 +46,6 @@ namespace LexiconMvc.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "55d466fb-a154-476f-ae81-c4884d0585a3",
-                            ConcurrencyStamp = "0db4f0eb-2d3c-46e7-b401-8f060c2c88ad",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "ff8cc382-6d2b-4a9f-b7c0-216bc387c71b",
-                            ConcurrencyStamp = "18ff2481-4531-4974-8a4b-27b61e89625d",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        });
                 });
 
             modelBuilder.Entity("LexiconMvc.Models.ApplicationUser", b =>
@@ -104,6 +90,9 @@ namespace LexiconMvc.Migrations
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
@@ -138,39 +127,39 @@ namespace LexiconMvc.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "eb12bc97-242a-4d9c-88a1-9a79774e097e",
+                            Id = "ef6c97ca-5299-4c2f-a690-29d265a36d5b",
                             AccessFailedCount = 0,
                             BirthDate = "1/1 1980",
-                            ConcurrencyStamp = "bf452211-080c-45e9-b1cf-bcce6f1d9571",
+                            ConcurrencyStamp = "ca689220-9f87-42b6-afa7-5ec63bfbd6bc",
+                            Email = "admin@admin.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
                             LastName = "Adminsson",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEgKeBZ832aHoWXza15UfcxFYEhWe929/7OLLLqEed5maqFrEI7CF42fG0U6blav0g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMjAHr5WrcUO+PL594GaAruXE98zkuOC06g2sPNTSaNZc6UqK+P84CbkTjpGe2bLrw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "520303fd-5890-416a-9d28-d946e5e40134",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@admin.com"
+                            SecurityStamp = "157b651d-1784-4651-84f2-7eb6ed692366",
+                            TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "f980fc02-bafa-4fe2-86e7-e8693421c329",
+                            Id = "b95380d9-2111-4a84-8521-efecf65b7ce7",
                             AccessFailedCount = 0,
                             BirthDate = "1/1 1990",
-                            ConcurrencyStamp = "b1082360-a4c6-43c3-9f56-25e00bc58d64",
+                            ConcurrencyStamp = "4d415628-a208-42db-b091-b2db68a8c743",
+                            Email = "user@user.com",
                             EmailConfirmed = false,
                             FirstName = "User",
                             LastName = "Usersson",
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@USER.COM",
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMtgRwvOFLb6AO0IfQw3ty5lf/PsucLuMzhGl5QXeFDbp+yG+KgfTRldZKAwHHV0RA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAED1Bm4TQdWsDMa0xdHUPCdZMtN5pni2xFlgxnFduaqH0xvatLesvck+Yv3OVzO8AXA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "23b403e3-cd15-407e-881c-1ec59a6ded63",
-                            TwoFactorEnabled = false,
-                            UserName = "user@user.com"
+                            SecurityStamp = "dd82992a-8580-405a-89c3-f63105c7158b",
+                            TwoFactorEnabled = false
                         });
                 });
 
@@ -369,6 +358,41 @@ namespace LexiconMvc.Migrations
                         {
                             PersonId = 4,
                             LanguageId = 11
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IdentityRole");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "d4f84cd9-780d-4e5e-a37e-ca5d3c08d12f",
+                            ConcurrencyStamp = "d105a4f2-8980-4454-9132-c2d12003234a",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "beca47ff-dfd0-4ee5-a2da-b4697f98e3e3",
+                            ConcurrencyStamp = "33756978-ea56-4d8f-9398-f0c88300323a",
+                            Name = "User",
+                            NormalizedName = "USER"
                         });
                 });
 

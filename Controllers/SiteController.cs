@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using LexiconMvc.Models;
 using LexiconMvc.Data;
-using Microsoft.AspNetCore.Http;
-using System.Text.Json;
 
 namespace LexiconMvc.Controllers
 {

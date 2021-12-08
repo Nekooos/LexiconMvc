@@ -4,14 +4,16 @@ using LexiconMvc.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LexiconMvc.Migrations
 {
     [DbContext(typeof(LexiconMvcContext))]
-    partial class LexiconMvcContextModelSnapshot : ModelSnapshot
+    [Migration("20211208150509_test59")]
+    partial class test59
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace LexiconMvc.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "55d466fb-a154-476f-ae81-c4884d0585a3",
-                            ConcurrencyStamp = "0db4f0eb-2d3c-46e7-b401-8f060c2c88ad",
+                            Id = "69400318-8df9-4af4-927f-5b3b3ff13e40",
+                            ConcurrencyStamp = "60c3528e-2de4-43cf-95da-a3e1f91ca8bf",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "ff8cc382-6d2b-4a9f-b7c0-216bc387c71b",
-                            ConcurrencyStamp = "18ff2481-4531-4974-8a4b-27b61e89625d",
+                            Id = "22500370-a5ce-42d7-8bde-47ee98d153e4",
+                            ConcurrencyStamp = "f1f34ea9-2f35-49e3-9ae7-90530aa1706d",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -138,37 +140,37 @@ namespace LexiconMvc.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "eb12bc97-242a-4d9c-88a1-9a79774e097e",
+                            Id = "806a41c9-7a22-471a-8b2a-628f08485644",
                             AccessFailedCount = 0,
                             BirthDate = "1/1 1980",
-                            ConcurrencyStamp = "bf452211-080c-45e9-b1cf-bcce6f1d9571",
+                            ConcurrencyStamp = "5d38e8bd-9639-4676-9a4a-d1936a64a024",
                             EmailConfirmed = false,
                             FirstName = "Admin",
                             LastName = "Adminsson",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEgKeBZ832aHoWXza15UfcxFYEhWe929/7OLLLqEed5maqFrEI7CF42fG0U6blav0g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECQYAkgQytr4AQg7W6DvOwzIuOSG2lEfayM1O/XH3RFmgIfTjhf8Di9+WjGxQSn1tw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "520303fd-5890-416a-9d28-d946e5e40134",
+                            SecurityStamp = "7b237c97-1a7f-4582-8d6c-d80ed94a3a85",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         },
                         new
                         {
-                            Id = "f980fc02-bafa-4fe2-86e7-e8693421c329",
+                            Id = "9fb7a6a2-db61-4549-b615-a336155f2dcf",
                             AccessFailedCount = 0,
                             BirthDate = "1/1 1990",
-                            ConcurrencyStamp = "b1082360-a4c6-43c3-9f56-25e00bc58d64",
+                            ConcurrencyStamp = "20f15f6a-d46f-4a18-ac02-91273709c296",
                             EmailConfirmed = false,
                             FirstName = "User",
                             LastName = "Usersson",
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@USER.COM",
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMtgRwvOFLb6AO0IfQw3ty5lf/PsucLuMzhGl5QXeFDbp+yG+KgfTRldZKAwHHV0RA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKztdAjQvBd1o9rA9t4V6EN7Gir8ilCA44tdNjKvtBPlY2MoatUPWLcJSglyYGvuig==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "23b403e3-cd15-407e-881c-1ec59a6ded63",
+                            SecurityStamp = "9f724b71-f32e-4f83-9c0a-98921afcc844",
                             TwoFactorEnabled = false,
                             UserName = "user@user.com"
                         });

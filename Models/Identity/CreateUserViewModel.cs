@@ -20,7 +20,7 @@ namespace LexiconMvc.Models.Identity
         [StringLength(20)]
         public string BirthDate { get; set; }
 
-        //[EmailAddress(ErrorMessage = "Invalid email address")]
+        [EmailAddress(ErrorMessage = "Invalid email address")]
         [Required(ErrorMessage = "Email is required")]
         public string Email { get; set; }
         

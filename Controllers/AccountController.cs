@@ -13,20 +13,35 @@ namespace LexiconMvc.Controllers
     {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
+        private RoleManager<ApplicationRole> roleManager;
+
         public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-
-
         }
 
         public IActionResult Index()
         {
-
-            List<ApplicationUser> users = _userManager.Users.ToList();
+            /*
             return View(
-                _userManager.Users.ToList()
+
+                (from user in _userManager.Users
+                 select new
+                 {
+                     UserId = user.Id,
+                     Username = user.UserName,
+                     Email = user.Email,
+                     RoleNames = (from userRole in user.UserRoles
+                                  join role in context.Roles on userRole.RoleId
+                                  equals role.Id
+                                  select role.Name).ToList()
+                 }).ToList());
+            */
+
+         
+            return View(_userManager.Users
+                .ToList()
                 .Select(user => createUserViewModel(user))
                 .ToList());
         }
@@ -40,18 +55,18 @@ namespace LexiconMvc.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(CreateUserViewModel createUserViewModel)
         {
-
-
             if (ModelState.IsValid)
             {
                 ApplicationUser applicationUser = CreateApplicationUser(createUserViewModel);
 
-                var result = await _userManager.CreateAsync(applicationUser, applicationUser.Password);
+                var result = await _userManager.CreateAsync(applicationUser, createUserViewModel.Password);
 
                 if(result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(applicationUser, "User");
+
                     await _signInManager.SignInAsync(applicationUser, isPersistent: false);
-                    return RedirectToAction("Index");
+                    return RedirectToAction(nameof(Index));
                 }
 
                 
@@ -63,14 +78,24 @@ namespace LexiconMvc.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Login(UserLoginViewModel userLoginViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                
+            }
+            return View();
+        }
+
         private ApplicationUser CreateApplicationUser(CreateUserViewModel createUser)
         {
             return new ApplicationUser
             {
                 FirstName = createUser.FirstName,
                 LastName = createUser.LastName,
-                Password = createUser.Password,
                 Email = createUser.Email,
+                UserName = createUser.Email,
                 BirthDate = createUser.BirthDate,
             };
         }

@@ -57,11 +57,12 @@ namespace LexiconMvc
                 options.Password.RequireLowercase = true;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = true;
-                options.User.AllowedUserNameCharacters = null; // HERE!
+                options.User.AllowedUserNameCharacters = null; 
                 options.User.RequireUniqueEmail = true;
                 })
                 .AddDefaultUI()
                 .AddDefaultTokenProviders()
+                .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<LexiconMvcContext>();
 
             services.AddRazorPages();

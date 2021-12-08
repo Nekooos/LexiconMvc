@@ -8,9 +8,7 @@ namespace LexiconMvc.Models
 {
     public class ApplicationRole : IdentityRole
     {
-        public String FirstName { get; set; }
-        public String LastName { get; set; }
-        public String BirthDate { get; set; }
+        public ICollection<ApplicationUserRole> UserRoles { get; set; }
 
     }
 }

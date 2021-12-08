@@ -56,13 +56,23 @@ namespace LexiconMvc.Data
                 .WithMany(language => language.PersonLanguages)
                 .HasForeignKey(personLanguage => personLanguage.LanguageId);
 
-            modelBuilder.Entity<IdentityUserRole<Guid>>()
-                .HasKey(userRole => new { userRole.UserId, userRole.RoleId });
 
-            /*modelBuilder.Entity<IdentityUserRole<Guid>>()
-                .HasOne<ApplicationUser>(applicationUser => applicationUser.RoleId)*/
+            /*
+            modelBuilder.Entity<ApplicationUserRole>(userRole =>
+            {
+                userRole.HasKey(userRole => new { userRole.UserId, userRole.RoleId });
+
+                userRole.HasOne(userRole => userRole.Role)
+                    .WithMany(role => role.UserRoles)
+                    .HasForeignKey(userRole => userRole.RoleId);
 
 
+
+                userRole.HasOne(userRole => userRole.User)
+                    .WithMany(user => user.UserRoles)
+                    .HasForeignKey(userRole => userRole.UserId);
+            });
+            */
 
 
 
@@ -118,8 +128,54 @@ namespace LexiconMvc.Data
             modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage(3, 12));
             modelBuilder.Entity<PersonLanguage>().HasData(new PersonLanguage(4, 11));
 
+            String roleAdminId = Guid.NewGuid().ToString();
+            String roleUserId = Guid.NewGuid().ToString();
+            String userId = Guid.NewGuid().ToString();
+            String adminId = Guid.NewGuid().ToString();
+
+            modelBuilder.Entity<ApplicationRole>().HasData(new ApplicationRole
+            { 
+                Id = roleAdminId, 
+                Name = "Admin", 
+                NormalizedName = "ADMIN" 
+            });
+
+            PasswordHasher <ApplicationUser> hasher = new PasswordHasher<ApplicationUser>();
+
+            modelBuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
+            {
+                Id= adminId,
+                UserName = "admin@admin.com",
+                NormalizedEmail = "ADMIN@ADMIN.COM",
+                NormalizedUserName="ADMIN",
+                PasswordHash = hasher.HashPassword(null, "password"),
+                FirstName = "Admin",
+                LastName = "Adminsson",
+                BirthDate = "1/1 1980"
+            });
+
+            modelBuilder.Entity<ApplicationRole>().HasData(new ApplicationRole
+            {
+                Id = roleUserId,
+                Name = "User",
+                NormalizedName = "USER"
+            });
+
+            modelBuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
+            {
+                Id = userId,
+                UserName = "user@user.com",
+                NormalizedEmail = "USER@USER.COM",
+                NormalizedUserName = "USER",
+                PasswordHash = hasher.HashPassword(null, "password"),
+                FirstName = "User",
+                LastName = "Usersson",
+                BirthDate = "1/1 1990"
+            }); 
+
+            //modelBuilder.Entity<IdentityUserRole<String>>().HasData(new IdentityUserRole<string> { RoleId = roleId, UserId = userId });
+
         }
 
-        
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LexiconMvc.Models.Identity
 {
-    public class UserLoginDto
+    public class UserLoginViewModel
     {
         [Required(ErrorMessage = "Email is required")]
         [EmailAddress(ErrorMessage = "Invalid email address")]
