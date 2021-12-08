@@ -50,12 +50,23 @@ namespace LexiconMvc
             services.AddDbContext<LexiconMvcContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("LexiconMvcContext")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.User.AllowedUserNameCharacters = null; // HERE!
+                options.User.RequireUniqueEmail = true;
+                })
                 .AddDefaultUI()
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<LexiconMvcContext>();
 
             services.AddRazorPages();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

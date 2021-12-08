@@ -80,6 +80,11 @@ namespace LexiconMvc.Controllers
                 .ThenInclude(personLanguage => personLanguage.Language)
                 .FirstOrDefault(person => person.Id == id);
 
+            if(person == null)
+            {
+                return NotFound();
+            }
+
             ViewData["CityId"] = new SelectList(_context.Cities, "Id", "Name");
             ViewData["LanguageId"] = new SelectList(_context.Language, "Id", "Name");
             return View(person);

@@ -13,7 +13,7 @@
     <div class="grid-container">
         <header class="site-header">
             <h1 class="logo">Logo</h1>
-            <nav>
+            <nav class="site-nav">
                 <ul>
                     <!-- link text, action, controller-->
                     <li>@Html.ActionLink("About", "Index", "Site")</li>
@@ -26,6 +26,8 @@
                     <li>@Html.ActionLink("Cities", "Index", "Cities")</li>
                     <li>@Html.ActionLink("Language", "Index", "Languages")</li>
                     <li>@Html.ActionLink("Person Language", "Index", "PersonLanguages")</li>
+                    <li>@Html.ActionLink("Application Users", "Index", "Account")</li>
+                    <li>@Html.ActionLink("Register", "Register", "Account")</li>
                     <partial name="_LoginPartial" />
 
                 </ul>
@@ -42,7 +44,8 @@
             <p>Time: <span class="current-time">@DateTime.Now</span></p>
             <p>Kristoffer Gustafsson</p>
         </footer>
-     
+
     </div>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

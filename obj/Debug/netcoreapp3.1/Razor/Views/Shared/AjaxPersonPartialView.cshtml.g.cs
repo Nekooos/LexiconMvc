@@ -26,8 +26,15 @@ using LexiconMvc.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "D:\repos\mvcexample\LexiconMvc\LexiconMvc\Views\_ViewImports.cshtml"
+using LexiconMvc.Models.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ade9c15010c52da82d5cfe409fb7bc868ef6b0a0", @"/Views/Shared/AjaxPersonPartialView.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0ab67563ae57710e88ccedbabf6d475e0d08948b", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ece8fb4f70ce9f0de340b0b3402eef4938cdbb39", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_AjaxPersonPartialView : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<PersonViewModel>>
     {
         #pragma warning disable 1998

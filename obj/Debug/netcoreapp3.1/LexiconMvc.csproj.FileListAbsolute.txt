@@ -329,3 +329,6 @@ D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Areas\Id
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditPersonLanguagePartial.cshtml.g.cs

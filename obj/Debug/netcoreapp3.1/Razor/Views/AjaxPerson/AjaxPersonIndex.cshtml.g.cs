@@ -26,8 +26,15 @@ using LexiconMvc.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "D:\repos\mvcexample\LexiconMvc\LexiconMvc\Views\_ViewImports.cshtml"
+using LexiconMvc.Models.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"640da0bab61e30279280cab7d4ecb5942e5eab6a", @"/Views/AjaxPerson/AjaxPersonIndex.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0ab67563ae57710e88ccedbabf6d475e0d08948b", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ece8fb4f70ce9f0de340b0b3402eef4938cdbb39", @"/Views/_ViewImports.cshtml")]
     public class Views_AjaxPerson_AjaxPersonIndex : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<PeopleViewModel>
     {
         #pragma warning disable 1998

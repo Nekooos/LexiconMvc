@@ -12,6 +12,7 @@ namespace LexiconMvc.Models
         public CreatePersonViewModel CreatePersonViewModel { get; set; }
 
         public Person Person { get; set; }
+        public List<PersonLanguage> PersonLanguages { get; set; }
 
         public PeopleViewModel(List<PersonViewModel> persons, String searchPhrase, CreatePersonViewModel createPersonViewModel)
         {

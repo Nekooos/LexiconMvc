@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LexiconMvc.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUserRole : IdentityUserRole<String>
     {
 
     }

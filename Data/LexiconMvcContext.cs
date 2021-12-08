@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace LexiconMvc.Data
 {
-    public class LexiconMvcContext : IdentityDbContext<ApplicationUser>
+    public class LexiconMvcContext : IdentityDbContext<ApplicationUser, ApplicationRole, String>
     {
         public LexiconMvcContext(DbContextOptions<LexiconMvcContext> options) : base(options) { }
         public DbSet<Person> Persons { get; set; }
@@ -19,7 +20,9 @@ namespace LexiconMvc.Data
         public DbSet<Language> Language { get; set; }
         public DbSet<PersonLanguage> PersonLanguage { get; set; }
 
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; } 
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<ApplicationRole> ApplicationRoles { get; set; }
+        public DbSet<ApplicationUserRole> ApplicationUserRoles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -52,6 +55,13 @@ namespace LexiconMvc.Data
                 .HasOne<Language>(personLanguage => personLanguage.Language)
                 .WithMany(language => language.PersonLanguages)
                 .HasForeignKey(personLanguage => personLanguage.LanguageId);
+
+            modelBuilder.Entity<IdentityUserRole<Guid>>()
+                .HasKey(userRole => new { userRole.UserId, userRole.RoleId });
+
+            /*modelBuilder.Entity<IdentityUserRole<Guid>>()
+                .HasOne<ApplicationUser>(applicationUser => applicationUser.RoleId)*/
+
 
 
 
