@@ -26,6 +26,32 @@ namespace LexiconMvc.Controllers
                 .ToList()));
         }
 
+        public IActionResult Edit(int id)
+        {
+
+            Country country = _context.Countries
+                .FirstOrDefault(country => country.Id == id);
+
+            if (country == null)
+            {
+                return NotFound();
+            }
+
+            return View(country);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Country country)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Entry(country).State = EntityState.Modified;
+                _context.SaveChanges();
+
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
         public IActionResult Details(int? id)
         {
             if (id == null)

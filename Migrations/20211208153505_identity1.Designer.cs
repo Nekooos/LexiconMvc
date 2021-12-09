@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LexiconMvc.Migrations
 {
     [DbContext(typeof(LexiconMvcContext))]
-    [Migration("20211206175414_identity7")]
-    partial class identity7
+    [Migration("20211208153505_identity1")]
+    partial class identity1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,17 +26,8 @@ namespace LexiconMvc.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("BirthDate")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -55,6 +46,22 @@ namespace LexiconMvc.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "63379c04-235f-4ca9-92ba-96633f69a67d",
+                            ConcurrencyStamp = "c0eb0830-19c1-4c60-9323-899ca383c4e7",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "0fadb03b-8a58-4bc2-aede-e309e137bb1a",
+                            ConcurrencyStamp = "31f67155-48bd-486e-b145-d83001610e51",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("LexiconMvc.Models.ApplicationUser", b =>
@@ -64,6 +71,9 @@ namespace LexiconMvc.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("BirthDate")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -75,6 +85,12 @@ namespace LexiconMvc.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -120,6 +136,44 @@ namespace LexiconMvc.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "95ccc393-31b7-42b4-8b85-a2768a2114d9",
+                            AccessFailedCount = 0,
+                            BirthDate = "1/1 1980",
+                            ConcurrencyStamp = "d2b77aac-32aa-4aee-8a87-5fe1eff3c90c",
+                            EmailConfirmed = false,
+                            FirstName = "Admin",
+                            LastName = "Adminsson",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ADMIN.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ6PzSW/xlPTZK469tFScaI+BT7uYHZJkFrREv6oA0p++/wh2tbBCcR3YDOfAHaeqg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "5479e9f9-4a9b-4924-8f2a-6471a780f5e3",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com"
+                        },
+                        new
+                        {
+                            Id = "7ba2ca8d-727c-4555-8f94-b929a671cd95",
+                            AccessFailedCount = 0,
+                            BirthDate = "1/1 1990",
+                            ConcurrencyStamp = "4d03299b-83e8-43f4-aae8-80c18ca71af8",
+                            EmailConfirmed = false,
+                            FirstName = "User",
+                            LastName = "Usersson",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER@USER.COM",
+                            NormalizedUserName = "USER",
+                            PasswordHash = "AQAAAAEAACcQAAAAELHWccBaHqwiW5sG6ddEL0dSeCbFeXRCuj0+g7F1zYjcb22miBbS0hayPKX/FoiXSg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "b6bd8f9f-0fd6-48ce-84e3-151ab33d59f0",
+                            TwoFactorEnabled = false,
+                            UserName = "user@user.com"
+                        });
                 });
 
             modelBuilder.Entity("LexiconMvc.Models.City", b =>
@@ -390,19 +444,6 @@ namespace LexiconMvc.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.ToTable("IdentityUserRole<Guid>");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
@@ -446,6 +487,16 @@ namespace LexiconMvc.Migrations
             modelBuilder.Entity("LexiconMvc.Models.ApplicationUserRole", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserRole<string>");
+
+                    b.Property<string>("RoleId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasIndex("RoleId1");
+
+                    b.HasIndex("UserId1");
 
                     b.HasDiscriminator().HasValue("ApplicationUserRole");
                 });
@@ -528,6 +579,17 @@ namespace LexiconMvc.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("LexiconMvc.Models.ApplicationUserRole", b =>
+                {
+                    b.HasOne("LexiconMvc.Models.ApplicationRole", "Role")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("RoleId1");
+
+                    b.HasOne("LexiconMvc.Models.ApplicationUser", "User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId1");
                 });
 #pragma warning restore 612, 618
         }

@@ -37,9 +37,14 @@
             <th>
                 Id
             </th>
-            <th></th>
             <th>
                 Language
+            </th>
+            <th>
+                Delete
+            </th>
+            <th>
+                Edit
             </th>
             <th></th>
         </tr>
@@ -56,6 +61,9 @@
             </td>
             <td>
                 <a asp-action="Delete" asp-route-id="@language.Id">Delete</a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@language.Id">Edit</a>
             </td>
         </tr>
 

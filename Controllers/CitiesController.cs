@@ -69,6 +69,32 @@ namespace LexiconMvc.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Edit(int id)
+        {
+
+            City city = _context.Cities
+                .FirstOrDefault(city => city.Id == id);
+
+            if (city == null)
+            {
+                return NotFound();
+            }
+
+            return View(city);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(City city)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Entry(city).State = EntityState.Modified;
+                _context.SaveChanges();
+
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
         private bool CityExists(int id)
         {
             return _context.Cities.Any(city => city.Id == id);

@@ -48,15 +48,15 @@ namespace LexiconMvc.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "55d466fb-a154-476f-ae81-c4884d0585a3",
-                            ConcurrencyStamp = "0db4f0eb-2d3c-46e7-b401-8f060c2c88ad",
+                            Id = "b51a0594-859b-40a1-830b-27d217a76f31",
+                            ConcurrencyStamp = "61a893ab-850d-4924-a4dd-9ce4ac809593",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "ff8cc382-6d2b-4a9f-b7c0-216bc387c71b",
-                            ConcurrencyStamp = "18ff2481-4531-4974-8a4b-27b61e89625d",
+                            Id = "6f421e74-2faf-4048-bdc8-4eaf1cbca939",
+                            ConcurrencyStamp = "a6415699-dd48-4a22-b29e-e436641bf6e9",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -138,37 +138,39 @@ namespace LexiconMvc.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "eb12bc97-242a-4d9c-88a1-9a79774e097e",
+                            Id = "c81479b4-bd7a-4d1f-9046-b954b29977ab",
                             AccessFailedCount = 0,
                             BirthDate = "1/1 1980",
-                            ConcurrencyStamp = "bf452211-080c-45e9-b1cf-bcce6f1d9571",
+                            ConcurrencyStamp = "5de4306f-e2f7-4033-9363-b3db0e3059d4",
+                            Email = "admin@admin.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
                             LastName = "Adminsson",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEgKeBZ832aHoWXza15UfcxFYEhWe929/7OLLLqEed5maqFrEI7CF42fG0U6blav0g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAOYbfrkYWHF7t89F9zeYpGhJRTvgceSN9RfsvQDBH2DyzaokslIhhrVl4chttKwSg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "520303fd-5890-416a-9d28-d946e5e40134",
+                            SecurityStamp = "52b26317-717a-494e-abd1-ebeb7628c438",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         },
                         new
                         {
-                            Id = "f980fc02-bafa-4fe2-86e7-e8693421c329",
+                            Id = "fa7a9b42-bea4-40ad-ab2a-0e7f851456ee",
                             AccessFailedCount = 0,
                             BirthDate = "1/1 1990",
-                            ConcurrencyStamp = "b1082360-a4c6-43c3-9f56-25e00bc58d64",
+                            ConcurrencyStamp = "2ae52e1c-efb8-4821-ba31-34d20d2b302c",
+                            Email = "user@user.com",
                             EmailConfirmed = false,
                             FirstName = "User",
                             LastName = "Usersson",
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@USER.COM",
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMtgRwvOFLb6AO0IfQw3ty5lf/PsucLuMzhGl5QXeFDbp+yG+KgfTRldZKAwHHV0RA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIuqOZ9+P7xhVSMCXrBKgNVTuLE8lJ5E9K3W7U5nZiiXwPOGWuDK9OK2E5onnmHwEQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "23b403e3-cd15-407e-881c-1ec59a6ded63",
+                            SecurityStamp = "0ac9c109-7222-4251-9a71-166aa7e27c32",
                             TwoFactorEnabled = false,
                             UserName = "user@user.com"
                         });

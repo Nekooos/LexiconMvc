@@ -30,6 +30,31 @@ namespace LexiconMvc.Controllers
             return View();
         }
 
+        public IActionResult Edit(int id)
+        {
+
+            Language language = _context.Language
+                .FirstOrDefault(language => language.Id == id);
+
+            if (language == null)
+            {
+                return NotFound();
+            }
+
+            return View(language);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Language language)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Entry(language).State = EntityState.Modified;
+                _context.SaveChanges();
+
+            }
+            return RedirectToAction(nameof(Index));
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -57,7 +57,7 @@ namespace LexiconMvc.Data
                 .HasForeignKey(personLanguage => personLanguage.LanguageId);
 
 
-            /*
+            
             modelBuilder.Entity<ApplicationUserRole>(userRole =>
             {
                 userRole.HasKey(userRole => new { userRole.UserId, userRole.RoleId });
@@ -72,7 +72,7 @@ namespace LexiconMvc.Data
                     .WithMany(user => user.UserRoles)
                     .HasForeignKey(userRole => userRole.UserId);
             });
-            */
+            
 
 
 
@@ -146,6 +146,7 @@ namespace LexiconMvc.Data
             {
                 Id= adminId,
                 UserName = "admin@admin.com",
+                Email = "admin@admin.com",
                 NormalizedEmail = "ADMIN@ADMIN.COM",
                 NormalizedUserName="ADMIN",
                 PasswordHash = hasher.HashPassword(null, "password"),
@@ -165,6 +166,7 @@ namespace LexiconMvc.Data
             {
                 Id = userId,
                 UserName = "user@user.com",
+                Email = "user@user.com",
                 NormalizedEmail = "USER@USER.COM",
                 NormalizedUserName = "USER",
                 PasswordHash = hasher.HashPassword(null, "password"),
@@ -172,9 +174,6 @@ namespace LexiconMvc.Data
                 LastName = "Usersson",
                 BirthDate = "1/1 1990"
             }); 
-
-            //modelBuilder.Entity<IdentityUserRole<String>>().HasData(new IdentityUserRole<string> { RoleId = roleId, UserId = userId });
-
         }
 
     }

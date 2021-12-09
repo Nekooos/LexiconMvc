@@ -332,3 +332,6 @@ D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Sh
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditPersonLanguagePartial.cshtml.g.cs
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Countries\Edit.cshtml.g.cs
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Cities\Edit.cshtml.g.cs
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Languages\Edit.cshtml.g.cs
