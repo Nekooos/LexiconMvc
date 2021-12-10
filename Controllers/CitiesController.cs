@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LexiconMvc.Data;
 using LexiconMvc.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LexiconMvc.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CitiesController : Controller
     {
         private readonly LexiconMvcContext _context;
@@ -79,7 +81,7 @@ namespace LexiconMvc.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["CountryId"] = new SelectList(_context.Countries, "Id", "Name");
             return View(city);
         }
 

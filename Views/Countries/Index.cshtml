@@ -43,12 +43,24 @@
             <td>
                 @Html.DisplayFor(modelItem => country.Name)
             </td>
-            <td>
-                <a asp-action="Delete" asp-route-id="@country.CountryId">Delete</a>
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@country.CountryId">Edit</a>
-            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-action="Delete" asp-route-id="@country.CountryId">Delete</a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@country.CountryId">Edit</a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    Delete
+                </td>
+                <td>
+                    Edit
+                </td>
+            }
         </tr>
         }
     </tbody>

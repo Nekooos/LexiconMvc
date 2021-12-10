@@ -4,14 +4,16 @@ using LexiconMvc.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LexiconMvc.Migrations
 {
     [DbContext(typeof(LexiconMvcContext))]
-    partial class LexiconMvcContextModelSnapshot : ModelSnapshot
+    [Migration("20211209120946_identity10")]
+    partial class identity10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace LexiconMvc.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "06152daa-3459-46cc-8c8f-8683a88ab17d",
-                            ConcurrencyStamp = "0042f2a8-ca57-40b2-89d4-6d3486c863fb",
+                            Id = "d8525f54-2606-4419-b91c-c59eebd0a129",
+                            ConcurrencyStamp = "740f0c0c-b478-4dcb-a9c6-a0c46f7a5978",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "c2fc9cd4-ada0-44f4-9a9a-b4d24d6bf9c6",
-                            ConcurrencyStamp = "e98cdcbe-9264-439e-8ebe-b4f701b878aa",
+                            Id = "3f6c7cc5-385f-43dc-83e8-cf63807b7ae8",
+                            ConcurrencyStamp = "207b8ca4-d72c-41b2-897d-f7cc12da5583",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -138,39 +140,39 @@ namespace LexiconMvc.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f1af3b55-5d96-4e5b-86c3-ce6ea6b589bd",
+                            Id = "81075993-a067-4dd4-a240-a64a8cc60b62",
                             AccessFailedCount = 0,
                             BirthDate = "1/1 1980",
-                            ConcurrencyStamp = "11e88562-9f67-473f-8dbf-e9df2a1be8bf",
+                            ConcurrencyStamp = "8f3f62db-df2c-4412-b5e6-c816e7d29a75",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
                             LastName = "Adminsson",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
-                            NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFXmnRc9x60YYUYpp8JbG6h8VAAemDAbZNwmvRnYtZYhL4eshelVmNxNhiNn03DuMw==",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP8dpbtL4O/CoaIbKpnd5Gr+RFr0WiCt7+VH9QYAt5BFx875V0c7Bq3JwZDK0m/+9A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f50b8444-a7a9-4e07-9978-482b8ec25acd",
+                            SecurityStamp = "88879a6c-0744-4a14-bc0c-853a356028b8",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         },
                         new
                         {
-                            Id = "b6e04281-dc7b-4f1b-82a5-19e68a5e9f41",
+                            Id = "3b9c4ffa-7fcb-4461-b0a8-2fea1210302b",
                             AccessFailedCount = 0,
                             BirthDate = "1/1 1990",
-                            ConcurrencyStamp = "50eed44f-4b87-4377-b1e0-325c14a1b528",
+                            ConcurrencyStamp = "82c512e1-f6e2-4b68-8c12-0348e9624a1b",
                             Email = "user@user.com",
                             EmailConfirmed = false,
                             FirstName = "User",
                             LastName = "Usersson",
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@USER.COM",
-                            NormalizedUserName = "USER@USER.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIj8xxTAKglIdqV8OjhPmU10ZtJhMTwrwazgukNz0JlIHsLF/CN3TlA6RI/tkxQKjw==",
+                            NormalizedUserName = "USER",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKjZWWUMggq3yukrnY5bosCLHjuNqjMI45EVLGDM3UYiyEzbsZWWkXmyXjfqIt1nqw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "38ff7dc2-6407-4f16-b2db-6b4a2bc351ad",
+                            SecurityStamp = "76393b6d-1c0a-4da2-b192-e2819fe519b5",
                             TwoFactorEnabled = false,
                             UserName = "user@user.com"
                         });
@@ -467,13 +469,13 @@ namespace LexiconMvc.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "f1af3b55-5d96-4e5b-86c3-ce6ea6b589bd",
-                            RoleId = "06152daa-3459-46cc-8c8f-8683a88ab17d"
+                            UserId = "81075993-a067-4dd4-a240-a64a8cc60b62",
+                            RoleId = "d8525f54-2606-4419-b91c-c59eebd0a129"
                         },
                         new
                         {
-                            UserId = "b6e04281-dc7b-4f1b-82a5-19e68a5e9f41",
-                            RoleId = "c2fc9cd4-ada0-44f4-9a9a-b4d24d6bf9c6"
+                            UserId = "3b9c4ffa-7fcb-4461-b0a8-2fea1210302b",
+                            RoleId = "3f6c7cc5-385f-43dc-83e8-cf63807b7ae8"
                         });
                 });
 
@@ -596,11 +598,11 @@ namespace LexiconMvc.Migrations
             modelBuilder.Entity("LexiconMvc.Models.ApplicationUserRole", b =>
                 {
                     b.HasOne("LexiconMvc.Models.ApplicationRole", "Role")
-                        .WithMany()
+                        .WithMany("UserRoles")
                         .HasForeignKey("RoleId1");
 
                     b.HasOne("LexiconMvc.Models.ApplicationUser", "User")
-                        .WithMany()
+                        .WithMany("UserRoles")
                         .HasForeignKey("UserId1");
                 });
 #pragma warning restore 612, 618

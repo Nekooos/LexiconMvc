@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LexiconMvc.Data;
 using LexiconMvc.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LexiconMvc.Controllers
 {
+    [Authorize(Roles = "Admin, User")]
     public class LanguagesController : Controller
     {
         private readonly LexiconMvcContext _context;

@@ -18,11 +18,8 @@
                 <span asp-validation-for="Language.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <!-- if (User.IsInRole("Admin")) -->
-
+ 
                 <input type="submit" value="Create" class="btn btn-primary" />
-
-
 
 
             </div>
@@ -59,12 +56,25 @@
             <td>
                 @Html.DisplayFor(modelItem => language.Name)
             </td>
-            <td>
-                <a asp-action="Delete" asp-route-id="@language.Id">Delete</a>
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@language.Id">Edit</a>
-            </td>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-action="Delete" asp-route-id="@language.Id">Delete</a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@language.Id">Edit</a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    Delete
+                </td>
+                <td>
+                    Edit
+                </td>
+            }
         </tr>
 
         }

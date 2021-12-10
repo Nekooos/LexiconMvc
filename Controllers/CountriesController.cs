@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LexiconMvc.Data;
 using LexiconMvc.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LexiconMvc.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CountriesController : Controller
     {
         private readonly LexiconMvcContext _context;
@@ -37,9 +39,11 @@ namespace LexiconMvc.Controllers
                 return NotFound();
             }
 
+
             return View(country);
         }
 
+        [Authorize(Roles = "User")]
         [HttpPost]
         public IActionResult Edit(Country country)
         {
@@ -47,7 +51,6 @@ namespace LexiconMvc.Controllers
             {
                 _context.Entry(country).State = EntityState.Modified;
                 _context.SaveChanges();
-
             }
             return RedirectToAction(nameof(Index));
         }
@@ -69,15 +72,13 @@ namespace LexiconMvc.Controllers
             return View(country);
         }
 
-        // GET: Countries/Create
+ 
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Countries/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] Country country)

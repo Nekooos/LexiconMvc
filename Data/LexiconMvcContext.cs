@@ -57,25 +57,6 @@ namespace LexiconMvc.Data
                 .HasForeignKey(personLanguage => personLanguage.LanguageId);
 
 
-            
-            modelBuilder.Entity<ApplicationUserRole>(userRole =>
-            {
-                userRole.HasKey(userRole => new { userRole.UserId, userRole.RoleId });
-
-                userRole.HasOne(userRole => userRole.Role)
-                    .WithMany(role => role.UserRoles)
-                    .HasForeignKey(userRole => userRole.RoleId);
-
-
-
-                userRole.HasOne(userRole => userRole.User)
-                    .WithMany(user => user.UserRoles)
-                    .HasForeignKey(userRole => userRole.UserId);
-            });
-            
-
-
-
             Person person1 = new Person(1, "Kristoffer", "0731112233");
             Person person2 = new Person(2, "Sara", "0731112233");
             Person person3 = new Person(3, "Björgen", "0731112233");
@@ -148,7 +129,7 @@ namespace LexiconMvc.Data
                 UserName = "admin@admin.com",
                 Email = "admin@admin.com",
                 NormalizedEmail = "ADMIN@ADMIN.COM",
-                NormalizedUserName="ADMIN",
+                NormalizedUserName= "ADMIN@ADMIN.COM",
                 PasswordHash = hasher.HashPassword(null, "password"),
                 FirstName = "Admin",
                 LastName = "Adminsson",
@@ -168,12 +149,24 @@ namespace LexiconMvc.Data
                 UserName = "user@user.com",
                 Email = "user@user.com",
                 NormalizedEmail = "USER@USER.COM",
-                NormalizedUserName = "USER",
+                NormalizedUserName = "USER@USER.COM",
                 PasswordHash = hasher.HashPassword(null, "password"),
                 FirstName = "User",
                 LastName = "Usersson",
                 BirthDate = "1/1 1990"
-            }); 
+            });
+
+            modelBuilder.Entity<IdentityUserRole<String>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = roleAdminId,
+                UserId = adminId
+            });
+
+            modelBuilder.Entity<IdentityUserRole<String>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = roleUserId,
+                UserId = userId
+            });
         }
 
     }

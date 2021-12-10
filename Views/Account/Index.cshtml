@@ -16,6 +16,9 @@
             <th>
                 Birth Date
             </th>
+            <th>
+                Roles
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -34,8 +37,12 @@
             <td>
                 @Html.DisplayFor(modelItem => user.BirthDate)
             </td>
-
-
+            <td>
+                @Html.DisplayFor(modelItem => user.Roles)
+            </td>
+            <td>
+                <a asp-action="EditUserRoles" asp-route-userId="@user.Id">Edit Roles</a>
+            </td>
         </tr>
         }
     </tbody>

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LexiconMvc.Data;
 using LexiconMvc.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LexiconMvc.Controllers
 {
+    [Authorize(Roles = "Admin, User")]
     public class PersonLanguagesController : Controller
     {
         private readonly LexiconMvcContext _context;
@@ -25,8 +27,8 @@ namespace LexiconMvc.Controllers
             ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Name");
             return View(new PersonLanguageViewModels(
                     _context.PersonLanguage
-                        .Include(p => p.Language)
-                        .Include(p => p.Person).ToList()
+                        .Include(personLanguage => personLanguage.Language)
+                        .Include(personLanguage => personLanguage.Person).ToList()
                 ));
         }
 
@@ -64,7 +66,7 @@ namespace LexiconMvc.Controllers
 
         private bool PersonLanguageExists(int id)
         {
-            return _context.PersonLanguage.Any(e => e.PersonId == id);
+            return _context.PersonLanguage.Any(personLanguage => personLanguage.PersonId == id);
         }
     }
 }

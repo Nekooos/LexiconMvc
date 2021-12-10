@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LexiconMvc.Data;
 using LexiconMvc.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LexiconMvc.Controllers
 {
+    [Authorize(Roles = "Admin, User")]
     public class PeopleController : Controller
     {
         private readonly LexiconMvcContext _context;
@@ -48,7 +50,7 @@ namespace LexiconMvc.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int? id)
         {
             var person = _context.Persons

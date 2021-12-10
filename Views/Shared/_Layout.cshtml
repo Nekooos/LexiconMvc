@@ -18,11 +18,15 @@
                     <!-- link text, action, controller-->
                     <li>@Html.ActionLink("About", "Index", "Site")</li>
                     <li>@Html.ActionLink("Peoples", "Index", "People")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
                     <li>@Html.ActionLink("Countries", "Index", "Countries")</li>
                     <li>@Html.ActionLink("Cities", "Index", "Cities")</li>
+                    <li>@Html.ActionLink("Application Users", "Index", "Account")</li>
+                    }
                     <li>@Html.ActionLink("Language", "Index", "Languages")</li>
                     <li>@Html.ActionLink("Person Language", "Index", "PersonLanguages")</li>
-                    <li>@Html.ActionLink("Application Users", "Index", "Account")</li>
+
                     <li>@Html.ActionLink("Register", "Register", "Account")</li>
                     <partial name="_LoginPartial" />
 

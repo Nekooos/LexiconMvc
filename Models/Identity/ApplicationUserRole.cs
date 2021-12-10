@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace LexiconMvc.Models
 {
-    public class ApplicationUserRole : IdentityUserRole<string>
+    public class ApplicationUserRole : IdentityUserRole<String>
     {
-        public virtual ApplicationUser User { get; set; }
-        public virtual ApplicationRole Role { get; set; }
+        public ApplicationUser User { get; set; }
+        public ApplicationRole Role { get; set; }
 
     }
 }
