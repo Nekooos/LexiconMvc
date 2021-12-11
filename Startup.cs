@@ -68,6 +68,13 @@ namespace LexiconMvc
             services.AddRazorPages();
 
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Account/Login";
+                options.LogoutPath = $"/Account/Logout";
+ 
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -147,6 +154,8 @@ namespace LexiconMvc
                 );
 
                 endpoints.MapRazorPages();
+
+
 
             });
         }
