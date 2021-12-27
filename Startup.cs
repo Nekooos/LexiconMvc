@@ -36,12 +36,14 @@ namespace LexiconMvc
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddControllersWithViews();
-
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+    );
 
             services.AddSession(options => {
                 options.IdleTimeout = TimeSpan.FromMinutes(10);
-                options.Cookie.HttpOnly = true;
+                options.Cookie.HttpOnly = true; 
                 options.Cookie.IsEssential = true;
             });
 

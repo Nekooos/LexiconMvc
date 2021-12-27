@@ -197,7 +197,6 @@ D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\LexiconMvc.Raz
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\LexiconMvc.RazorAssemblyInfo.cs
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\staticwebassets\LexiconMvc.StaticWebAssets.Manifest.cache
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\staticwebassets\LexiconMvc.StaticWebAssets.xml
-D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\scopedcss\bundle\LexiconMvc.styles.css
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\LexiconMvc.TagHelpers.input.cache
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\LexiconMvc.TagHelpers.output.cache
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\LexiconMvc.RazorCoreGenerate.cache
@@ -337,3 +336,8 @@ D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Ci
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Languages\Edit.cshtml.g.cs
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\EditUserRoles.cshtml.g.cs
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+
 using System.Threading.Tasks;
 
 namespace LexiconMvc.Models
@@ -21,8 +23,10 @@ namespace LexiconMvc.Models
         public Country Country { get; set; }
         public int? CountryId { get; set; }
 
+        [JsonIgnore]
         public List<Person> Persons { get; set; }
 
+    
         public City(String name, List<Person> persons)
         {
             Name = name;
