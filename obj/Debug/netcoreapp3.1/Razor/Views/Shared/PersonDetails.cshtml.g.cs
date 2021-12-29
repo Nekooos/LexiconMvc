@@ -33,8 +33,15 @@ using LexiconMvc.Models.Identity;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "D:\repos\mvcexample\LexiconMvc\LexiconMvc\Views\_ViewImports.cshtml"
+using React.AspNet;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e359afa86f50c7e437e6f05e7c3670e818a9c014", @"/Views/Shared/PersonDetails.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ece8fb4f70ce9f0de340b0b3402eef4938cdbb39", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"22d34b45d46b94c7e8dea64c214cb4c56148e248", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_PersonDetails : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<PersonViewModel>
     {
         #pragma warning disable 1998

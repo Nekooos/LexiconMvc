@@ -33,8 +33,15 @@ using LexiconMvc.Models.Identity;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "D:\repos\mvcexample\LexiconMvc\LexiconMvc\Views\_ViewImports.cshtml"
+using React.AspNet;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2bba41045ed8e92b0ce3859db9c389cd1081bcc5", @"/Views/Site/ShowAllRepositories.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ece8fb4f70ce9f0de340b0b3402eef4938cdbb39", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"22d34b45d46b94c7e8dea64c214cb4c56148e248", @"/Views/_ViewImports.cshtml")]
     public class Views_Site_ShowAllRepositories : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<GithubRepository>>
     {
         #pragma warning disable 1998

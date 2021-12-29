@@ -14,6 +14,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using LexiconMvc.Models;
 using Microsoft.AspNetCore.Identity;
+using JavaScriptEngineSwitcher.V8;
+using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
+using React.AspNet;
 
 namespace LexiconMvc
 {
@@ -35,6 +38,12 @@ namespace LexiconMvc
             services.AddScoped<IPersonService, PersonService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddReact();
+            services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
+                .AddV8();
 
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
@@ -67,6 +76,8 @@ namespace LexiconMvc
                 .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<LexiconMvcContext>();
 
+
+            
             services.AddRazorPages();
 
 
@@ -92,6 +103,13 @@ namespace LexiconMvc
             }
             app.UseSession();
             app.UseHttpsRedirection();
+
+            app.UseReact(config =>
+            {
+                //config.AddScript("file");
+            }
+            );
+
             app.UseStaticFiles();
 
             app.UseRouting();
