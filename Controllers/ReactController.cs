@@ -6,6 +6,7 @@ using LexiconMvc.Data;
 using LexiconMvc.Models;
 using System.Threading.Tasks;
 using System;
+using Microsoft.AspNetCore.Cors;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

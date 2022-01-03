@@ -364,3 +364,5 @@ D:\repos\mvcexample\LexiconMvc\LexiconMvc\bin\Debug\netcoreapp3.1\runtimes\win\l
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 D:\repos\mvcexample\LexiconMvc\LexiconMvc\obj\Debug\netcoreapp3.1\Razor\Views\React\Index.cshtml.g.cs
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\bin\Debug\netcoreapp3.1\System.Web.Cors.dll
+D:\repos\mvcexample\LexiconMvc\LexiconMvc\bin\Debug\netcoreapp3.1\System.Web.Http.Cors.dll

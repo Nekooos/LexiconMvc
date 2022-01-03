@@ -88,6 +88,10 @@ namespace LexiconMvc
  
             });
 
+            services.AddCors(options => options.AddDefaultPolicy(
+                builder => builder.WithOrigins("http://localhost:3000")));
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -113,6 +117,8 @@ namespace LexiconMvc
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthentication();
             app.UseAuthorization();
