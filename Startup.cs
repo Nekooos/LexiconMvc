@@ -88,6 +88,7 @@ namespace LexiconMvc
  
             });
 
+
             services.AddCors(options => options.AddDefaultPolicy(
                 builder => builder.WithOrigins("http://localhost:3000")));
 
@@ -118,7 +119,10 @@ namespace LexiconMvc
 
             app.UseRouting();
 
-            app.UseCors();
+            app.UseCors(
+                options => options.WithOrigins("http://localhost:3000")
+               .AllowAnyHeader().AllowAnyMethod().AllowCredentials()
+            );
 
             app.UseAuthentication();
             app.UseAuthorization();
