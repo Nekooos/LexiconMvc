@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace LexiconMvc.Models
 
         public String Name { get; set; }
 
+        [JsonIgnore]
         public List<City> Cities { get; set; }
     }
 }

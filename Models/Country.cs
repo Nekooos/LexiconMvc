@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,6 +20,7 @@ namespace LexiconMvc.Models
         public String Name { get; set; }
 
         [MaxLength(30)]
+        [JsonIgnore]
         public List<City> Cities { get; set; }
 
         public Country(String name, List<City> cities)

@@ -39,7 +39,7 @@ namespace LexiconMvc.Controllers
         }
 
         // GET api/<PeoplesReactController>/5
-        [HttpGet("/get/{id}")]
+        [HttpGet("get/{id}")]
         public IActionResult Get(int id)
         {
             var person = _context.Persons
@@ -47,7 +47,7 @@ namespace LexiconMvc.Controllers
                 .ThenInclude(city => city.Country)
                 .Include(person => person.PersonLanguages)
                 .ThenInclude(personLanguage => personLanguage.Language)
-                .FirstOrDefault();
+                .FirstOrDefault(person => person.Id == id);
 
             if(person == null)
             {
@@ -57,29 +57,28 @@ namespace LexiconMvc.Controllers
             return Ok(person);
         }
 
-        [HttpGet("/cities")]
+        [HttpGet("cities")]
         public IActionResult GetCities()
         {
-            return Ok(_context.Cities.ToList());
+            return Ok(_context.Cities
+                .Include(city => city.Country)
+                .ToList());
         }
 
-        [HttpGet("/countries")]
+        [HttpGet("countries")]
         public IActionResult GetCountries()
         {
             return Ok(_context.Countries.ToList()); 
         }
 
         // POST api/<PeoplesReactController>
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id, Name, CityId, PhoneNumber")] CreatePersonViewModel createPersonViewModel)
+        [HttpPost("create")]
+        public IActionResult Create(Person person)
         {
-            Person person = CreatePerson(createPersonViewModel);
-            if (ModelState.IsValid)
-            {
+
                 _context.Add(person);
                 _context.SaveChanges();
-            }
+            
 
             return CreatedAtAction(nameof(Get), new { id = person.Id }, CreatePersonViewModel(person));
         }
@@ -133,7 +132,6 @@ namespace LexiconMvc.Controllers
         {
             Person person = new Person();
             person.Name = createPersonViewModel.Name;
-            person.City = createPersonViewModel.City;
             person.CityId = createPersonViewModel.CityId;
             person.PhoneNumber = createPersonViewModel.PhoneNumber;
             return person;
